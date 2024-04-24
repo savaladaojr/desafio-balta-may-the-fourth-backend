@@ -19,6 +19,6 @@ public class Vehicle : Entity
 
     public EnumTypeOfVehicle Type { get; set; }
 
-    //EF Relation
-    public List<VehicleFilm>? Movies { get; init; }
+
+    public List<VehicleFilm> Films { get; init; }
 }

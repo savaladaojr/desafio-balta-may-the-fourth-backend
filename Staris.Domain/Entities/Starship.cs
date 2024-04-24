@@ -8,6 +8,8 @@ public sealed class Starship : Entity
     public int MaximumMegalights { get; set; }
 
     //EF Relation
-    Vehicle? Vehicle { get; set; }  
+    Vehicle? Vehicle { get; set; }  //por que não public?
+
+    public List<StarshipFilm>? Films { get; init; }
 }
 
