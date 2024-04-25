@@ -33,6 +33,13 @@ namespace Staris.Infra.Data.Configurations
                 .HasColumnType("real")
                 .IsRequired();
 
+            // removendo a dependencia de VeichleFilms, pois o id do starship
+            // é o mesmo de vehicle
+            // se remover essa linha, o ef estava criando o
+            // relacionamento na tabela VehicleFilms para o starship            
+            builder
+                .Ignore(f => f.Starships);
+
             builder.HasKey(f => f.Id);
 
             builder.ToTable("Films");
