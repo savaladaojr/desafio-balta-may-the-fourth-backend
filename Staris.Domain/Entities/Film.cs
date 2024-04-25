@@ -14,6 +14,8 @@ public sealed class Film : Entity
 
     //EF Relation
 	public List<CharacterFilm>? Characters { get; init; }
+    public List<PlanetFilm>? Planets { get; init; }
+    public List<FilmVehicle>? Vehicles { get; init; } //Filtrar somento os Vehicle.Type == Vehicle
+	public List<FilmVehicle>? Starships { get; init; } //Filtrar somento os Vehicle.Type == Starthip
 
-	public List<PlanetFilm>? Planets { get; init; }
 }

@@ -19,6 +19,9 @@ public class Vehicle : Entity
 
     public EnumTypeOfVehicle Type { get; set; }
 
-    //EF Relation
-    public List<VehicleFilm>? Movies { get; init; }
+
+    //EF Relational
+    public Starship? Starship { get; init; }
+
+    public List<FilmVehicle>? Films { get; init; } //Filtrar somento os Types == Vehicle
 }
