@@ -17,5 +17,5 @@ public sealed class Planet : Entity
     //EF Relation
     public List<PlanetCharacter> Residents { get; set; }
 
-	public List<PlanetFilm> Movies { get; set; }
+	public List<PlanetFilm>? Movies { get; set; }
 }
