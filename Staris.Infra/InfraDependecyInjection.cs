@@ -27,7 +27,7 @@ public static class InfraDependecyInjection
 		services.AddScoped<ICharacterFilmRepository, CharacterFilmRepository>();
 		services.AddScoped<ICharacterRepository, CharacterRepository>();
 		services.AddScoped<IFilmRepository, FilmRepository>();
-		services.AddScoped<IFilmVehicleRepository, FilmVehicleRepository>();
+		services.AddScoped<IVehicleFilmRepository, VehicleFilmRepository>();
 		services.AddScoped<IPlanetCharacterRepository, PlanetCharacterRepository>();
 		services.AddScoped<IPlanetFilmRepository, PlanetFilmRepository>();
 		services.AddScoped<IPlanetRepository, PlanetRepository>();

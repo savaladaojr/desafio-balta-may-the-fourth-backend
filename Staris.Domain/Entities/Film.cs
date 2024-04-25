@@ -1,4 +1,5 @@
-﻿using Staris.Domain.Common;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Staris.Domain.Common;
 
 namespace Staris.Domain.Entities;
 
@@ -15,7 +16,9 @@ public sealed class Film : Entity
     //EF Relation
 	public List<CharacterFilm>? Characters { get; init; }
     public List<PlanetFilm>? Planets { get; init; }
-    public List<FilmVehicle>? Vehicles { get; init; } //Filtrar somento os Vehicle.Type == Vehicle
-	public List<FilmVehicle>? Starships { get; init; } //Filtrar somento os Vehicle.Type == Starthip
+    public List<VehicleFilm>? Vehicles { get; init; } //Filtrar somento os Vehicle.Type == Vehicle
+
+    // A lista sera apenas em memória, uma vez que uma starship é um vehicle
+    public List<VehicleFilm>? Starships { get; init; } //Filtrar somento os Vehicle.Type == Starthip
 
 }

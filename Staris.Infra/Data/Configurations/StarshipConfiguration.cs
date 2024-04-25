@@ -10,8 +10,8 @@ namespace Staris.Infra.Data.Configurations
         public void Configure(EntityTypeBuilder<Starship> builder)
         {
             builder.Property(s => s.VehicleId)
-                .ValueGeneratedOnAdd()
-                .IsRequired();
+                .IsRequired()
+                .ValueGeneratedNever();
 
             builder.Property(s => s.HyperdriveRating)
                 .HasColumnType("real")
