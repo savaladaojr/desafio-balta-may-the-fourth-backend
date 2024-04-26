@@ -10,7 +10,6 @@ namespace Staris.Infra.Data.Configurations
         public void Configure(EntityTypeBuilder<Film> builder) 
         {
             builder.Property(f => f.Id)
-                .HasColumnName("FilmId")
                 .ValueGeneratedOnAdd()
                 .IsRequired();
 
@@ -33,6 +32,13 @@ namespace Staris.Infra.Data.Configurations
             builder.Property(f => f.ReleaseDate)
                 .HasColumnType("real")
                 .IsRequired();
+
+            // removendo a dependencia de VeichleFilms, pois o id do starship
+            // é o mesmo de vehicle
+            // se remover essa linha, o ef estava criando o
+            // relacionamento na tabela VehicleFilms para o starship            
+            builder
+                .Ignore(f => f.Starships);
 
             builder.HasKey(f => f.Id);
 

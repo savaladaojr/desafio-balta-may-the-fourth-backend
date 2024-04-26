@@ -9,18 +9,17 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWor
 
     public DbSet<Character> Characters { get; set; } 
     public DbSet<CharacterFilm> CharacterFilms { get; set; }
-    public DbSet<CharacterPlanet> CharacterPlanets { get; set; }
+    public DbSet<PlanetCharacter> PlanetCharacters { get; set; }
     public DbSet<Film> Films { get; set; }  
     public DbSet<Planet> Planets { get; set;}
     public DbSet<PlanetFilm> PlanetFilms{ get; set; }
     public DbSet<Starship> Starships { get; set; }
-    public DbSet<StarshipFilm> StarshipFilms { get; set; }  
     public DbSet<Vehicle> Vehicles { get; set; }
     public DbSet<VehicleFilm> VehicleFilms { get; set; }
 
 
 
-    public ApplicationDbContext(DbContextOptions options) : base(options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
 
