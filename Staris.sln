@@ -7,17 +7,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2BCC6D52-3DE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{52F36029-3F14-4C30-A88D-E60536E5C50D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staris.Domain", "Staris.Domain\Staris.Domain.csproj", "{0E215027-E1A1-4FA6-983A-4F244F9A0108}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Domain", "Staris.Domain\Staris.Domain.csproj", "{0E215027-E1A1-4FA6-983A-4F244F9A0108}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staris.Infra", "Staris.Infra\Staris.Infra.csproj", "{F71FB1E4-DF40-4B29-A697-90FE26EA9422}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Infra", "Staris.Infra\Staris.Infra.csproj", "{F71FB1E4-DF40-4B29-A697-90FE26EA9422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staris.Application", "Staris.Application\Staris.Application.csproj", "{B27A4398-DB23-467D-BDA7-1B5134D2CE5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Application", "Staris.Application\Staris.Application.csproj", "{B27A4398-DB23-467D-BDA7-1B5134D2CE5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staris.Web.Api", "Staris.Web.Api\Staris.Web.Api.csproj", "{DC97F03C-1FC9-4518-AE77-AC89C410E1BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Web.Api", "Staris.Web.Api\Staris.Web.Api.csproj", "{DC97F03C-1FC9-4518-AE77-AC89C410E1BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staris.Test", "Staris.Test\Staris.Test.csproj", "{3D823718-F944-4216-A57C-8D1C3A4D3610}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Test", "Staris.Test\Staris.Test.csproj", "{3D823718-F944-4216-A57C-8D1C3A4D3610}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Shared", "Application.Shared\Application.Shared.csproj", "{E979E7EE-6D14-4868-B99D-080EC73EFFBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Application.Shared", "Application.Shared\Staris.Application.Shared.csproj", "{E979E7EE-6D14-4868-B99D-080EC73EFFBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

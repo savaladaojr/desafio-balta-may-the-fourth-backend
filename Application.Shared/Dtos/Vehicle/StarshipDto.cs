@@ -1,7 +1,7 @@
-namespace Application.Shared.Dtos.Vehicle;
+namespace Staris.Application.Shared.Dtos.Vehicle;
 
-public class StarshipDto : BaseVehicleDto
+public class StarshipDto : VehicleDto
 {
-    public string HiperdriveRating { get; set; } = string.Empty;
-    public string Mglt { get; set; } = string.Empty;
+	public string HiperdriveRating { get; set; } = string.Empty;
+	public string Mglt { get; set; } = string.Empty;
 }

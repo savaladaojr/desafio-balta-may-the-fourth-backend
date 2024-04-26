@@ -1,3 +1,6 @@
+using Staris.Application.Shared.Dtos;
+using Staris.Application.Shared.Dtos.Shared;
+
 namespace Application.Shared.Dtos.Film;
 
 public class FilmDto : BaseDto
@@ -8,12 +11,12 @@ public class FilmDto : BaseDto
     public string Director { get; set; } = string.Empty;
     public string Producer { get; set; } = string.Empty;
     public DateTime ReleaseDate { get; set; }
-    public IEnumerable<Shared.CharacterDto> Characters { get; set; } =
-        Enumerable.Empty<Shared.CharacterDto>();
-    public IEnumerable<Shared.PlanetDto> Planets { get; set; } =
-        Enumerable.Empty<Shared.PlanetDto>();
-    public IEnumerable<Shared.VehicleDto> Vehicles { get; set; } =
-        Enumerable.Empty<Shared.VehicleDto>();
-    public IEnumerable<Shared.StarshipDto> Starships { get; set; } =
-        Enumerable.Empty<Shared.StarshipDto>();
+    public IEnumerable<Staris.Application.Shared.Dtos.Shared.CharacterDto> Characters { get; set; } =
+        Enumerable.Empty<Staris.Application.Shared.Dtos.Shared.CharacterDto>();
+    public IEnumerable<Staris.Application.Shared.Dtos.Shared.PlanetDto> Planets { get; set; } =
+        Enumerable.Empty<Staris.Application.Shared.Dtos.Shared.PlanetDto>();
+    public IEnumerable<VehicleDto> Vehicles { get; set; } =
+        Enumerable.Empty<VehicleDto>();
+    public IEnumerable<StarshipDto> Starships { get; set; } =
+        Enumerable.Empty<StarshipDto>();
 }

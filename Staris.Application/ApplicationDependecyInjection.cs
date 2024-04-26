@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Staris.Application.UserLogin.Commands.ByUserName;
 using System.Reflection;
 
 namespace Staris.Application;
@@ -13,6 +16,19 @@ public static class ApplicationDependecyInjection
     public static IServiceCollection AddApplicationDependencyInjection(this IServiceCollection services)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
-        return services;
+
+		//Adding Mediatr commands handlers
+		services.AddMediatR(opt =>
+		{
+    		opt.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+
+		});
+
+
+		//Adding Fluent Validation
+		services.AddTransient<IValidator<LoginByUserNameCommand>, LoginByUserNameCommandValidator>();
+
+
+		return services;
     }
 }
