@@ -1,6 +1,6 @@
 ﻿namespace Staris.Domain.Enumerables;
 
-public enum EnumTypeOfVehicle
+public enum TypeOfVehicle
 {
     Unknown = 0,
     Vehicle = 1,

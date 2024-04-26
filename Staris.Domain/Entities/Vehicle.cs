@@ -17,7 +17,7 @@ public class Vehicle : Entity
     public int Consumables { get; set; }
     public string Class { get; set; } = string.Empty;
 
-    public EnumTypeOfVehicle Type { get; set; }
+    public TypeOfVehicle Type { get; set; }
 
     //EF Relational
     public Starship? Starship { get; init; }

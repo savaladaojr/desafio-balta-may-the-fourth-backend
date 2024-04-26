@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Staris.Infra.Data;
 
@@ -10,9 +11,11 @@ using Staris.Infra.Data;
 namespace Staris.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240426205524_Adjusting_DataTypes_Planet_Character")]
+    partial class Adjusting_DataTypes_Planet_Character
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
@@ -144,12 +147,8 @@ namespace Staris.Infra.Migrations
                     b.Property<int>("RotationPeriod")
                         .HasColumnType("integer");
 
-                    b.Property<decimal>("SurfaceWater")
+                    b.Property<int>("SurfaceWater")
                         .HasColumnType("numeric");
-
-                    b.Property<string>("Terrain")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
