@@ -30,8 +30,6 @@ public static class ApplicationDependecyInjection
 
 		//Adding Fluent Validation
 		//services.AddScoped<IValidator<LoginByUserNameCommand>, LoginByUserNameCommandValidator>();
-
-		//Adding FluentValidation
 		services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
 		return services;
