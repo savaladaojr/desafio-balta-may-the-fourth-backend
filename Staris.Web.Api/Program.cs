@@ -1,57 +1,89 @@
-using Staris.Domain;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Staris.Application;
-using Staris.Infra;
+using Staris.Application.Characters.Queries.GetAll;
+using Staris.Application.Characters.Queries.GetById;
 using Staris.Application.Configurations;
+using Staris.Application.Shared.Requests;
+using Staris.Application.UserLogin.Commands.ByUserName;
+using Staris.Domain;
+using Staris.Infra;
+using Staris.Web.Api;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+
+//Adding Application Settings to the services.
+builder.Services.Configure<ApplicationSettings>(builder.Configuration.GetSection("ApplicationSettings"));
+
+// Adding layers Dependency Injection
 builder.Services.AddDomainDependencyInjection();
 builder.Services.AddApplicationDependencyInjection();
 builder.Services.AddInfraDependencyInjection(builder.Configuration);
 
-builder.Services.Configure<ApplicationSettings>(builder.Configuration.GetSection("ApplicationSettings"));
-
-
-// Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerDependencyInjection();
+builder.Services.AddAuthenticationJWTBearer();
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+///////////////////////////////////////
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+	app.UseSwagger();
+	app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+//
+app.UseAuthentication();
+app.UseAuthorization();
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
+
+
+app.MapPost("/security/login", [AllowAnonymous]
+	async (IMediator mediator, UserLoginRequest request) =>
+	{
+		var result = await mediator.Send(new LoginByUserNameCommand() { UserName = request.UserName, Password = request.Password });
+		if (result.Token == string.Empty)
+		{
+			return Results.Unauthorized();
+		}
+		else
+		{
+			return Results.Ok(result);
+		}
+	}
+);
+
+app.MapGet("/Characters/", [AllowAnonymous]
+	async (IMediator mediator) =>
+	{
+		var result = await mediator.Send(new CharacterGetAllQuery());
+		return Results.Ok(result);
+	}
+)
+.WithName("Characters")
 .WithOpenApi();
 
-app.Run();
 
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+app.MapGet("/Characters/{id:int}", [AllowAnonymous]
+async (IMediator mediator, int id) =>
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+	var result = await mediator.Send(new CharacterGetByIdQuery() { Id = id});
+	return Results.Ok(result);
 }
+)
+.WithName("CharactersById")
+.WithOpenApi();
+
+
+app.Run();

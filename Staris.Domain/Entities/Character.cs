@@ -7,6 +7,7 @@ public sealed class Character : Entity
     public string Name { get; set; } = string.Empty;
     public decimal BirthYear { get; set; }
     public string BirthYearPeriod { get; set; } = string.Empty;
+    //todo: precisa criar um enum ou armazenar o valor string como na API original
     public short Gender { get; set; }
     public string Mass { get; set; } = string.Empty;
     public string Height { get; set; } = string.Empty;
