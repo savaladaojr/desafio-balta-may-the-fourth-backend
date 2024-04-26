@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Staris.Application.UserLogin.Commands.ByUserName;
+using Staris.Application.UseCases.UserLogin.Commands.ByUserName;
 using System.Reflection;
 
 namespace Staris.Application;
@@ -24,10 +24,8 @@ public static class ApplicationDependecyInjection
 
 		});
 
-
 		//Adding Fluent Validation
-		services.AddTransient<IValidator<LoginByUserNameCommand>, LoginByUserNameCommandValidator>();
-
+		services.AddScoped<IValidator<LoginByUserNameCommand>, LoginByUserNameCommandValidator>();
 
 		return services;
     }
