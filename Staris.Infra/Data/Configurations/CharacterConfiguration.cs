@@ -23,7 +23,7 @@ namespace Staris.Infra.Data.Configurations
 				.IsRequired();
 
 			builder.Property(p => p.BirthYearPeriod)
-				.HasColumnType("text")
+				.HasColumnType("numeric") //changed to numeric
 				.IsRequired();
 
 			builder.Property(p => p.Gender)

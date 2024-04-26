@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="app.db" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
@@ -19,6 +23,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Staris.Application.Shared\Staris.Application.Shared.csproj" />
     <ProjectReference Include="..\Staris.Infra\Staris.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="app.db" />
   </ItemGroup>
 
 </Project>
