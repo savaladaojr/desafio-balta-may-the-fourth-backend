@@ -3,7 +3,7 @@ using Staris.Application.Shared.Dtos.Shared;
 
 namespace Application.Shared.Dtos;
 
-public class PlanetDto : BaseDto
+public class PlanetDTO : BaseDTO
 {
     public string Name { get; set; } = string.Empty;
     public string RotationPeriod { get; set; } = string.Empty;
@@ -14,14 +14,8 @@ public class PlanetDto : BaseDto
     public string Terrain { get; set; } = string.Empty;
     public string SurfaceWater { get; set; } = string.Empty;
     public string Population { get; set; } = string.Empty;
-    public IEnumerable<Staris.Application.Shared.Dtos.Shared.CharacterDto> Characters { get; set; } = 
-        Enumerable.Empty<Staris.Application.Shared.Dtos.Shared.CharacterDto>();
-    public IEnumerable<FilmDto> Movies { get; set; } = 
-        Enumerable.Empty<FilmDto>();    
-}
-
-public class PlanetCDTO : BaseDto
-{
-    public string Name { get; set; } = string.Empty;
-
+    public IEnumerable<CharacterCDTO> Characters { get; set; } = 
+        Enumerable.Empty<CharacterCDTO>();
+    public IEnumerable<FilmCDTO> Movies { get; set; } = 
+        Enumerable.Empty<FilmCDTO>();    
 }

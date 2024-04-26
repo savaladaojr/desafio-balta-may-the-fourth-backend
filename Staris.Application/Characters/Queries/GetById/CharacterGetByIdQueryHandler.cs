@@ -5,7 +5,7 @@ using Staris.Domain.Interfaces.Repositories;
 
 namespace Staris.Application.Characters.Queries.GetById
 {
-	public class CharacterGetByIdQueryHandler : IRequestHandler<CharacterGetByIdQuery, CharacterDto>
+	public class CharacterGetByIdQueryHandler : IRequestHandler<CharacterGetByIdQuery, CharacterDTO>
 	{
 		private readonly ICharacterRepository _characterRepository;
 		private readonly IMapper _mapper;
@@ -16,7 +16,7 @@ namespace Staris.Application.Characters.Queries.GetById
 			_mapper = mapper;
 		}
 
-		public async Task<CharacterDto> Handle(CharacterGetByIdQuery request, CancellationToken cancellationToken)
+		public async Task<CharacterDTO> Handle(CharacterGetByIdQuery request, CancellationToken cancellationToken)
 		{
 			var result = await _characterRepository.GetByIdAsync(new object[] { request.Id });
 
@@ -25,7 +25,7 @@ namespace Staris.Application.Characters.Queries.GetById
 				throw new Exception($"Registro não com id {request.Id} encontrado");
 			}
 
-			var finalResult = _mapper.Map<CharacterDto>(result);
+			var finalResult = _mapper.Map<CharacterDTO>(result);
 
 			return finalResult;
 		}

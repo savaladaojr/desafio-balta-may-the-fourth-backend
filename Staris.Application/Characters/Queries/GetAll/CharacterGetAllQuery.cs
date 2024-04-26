@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Staris.Application.Characters.Queries.GetAll
 {
-	public class CharacterGetAllQuery : IRequest<IEnumerable<CharacterDto>>
+	public class CharacterGetAllQuery : IRequest<IEnumerable<CharacterDTO>>
 	{
     }
 

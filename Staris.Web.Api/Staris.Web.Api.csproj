@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application.Shared\Staris.Application.Shared.csproj" />
+    <ProjectReference Include="..\Staris.Application.Shared\Staris.Application.Shared.csproj" />
     <ProjectReference Include="..\Staris.Infra\Staris.Infra.csproj" />
   </ItemGroup>
 

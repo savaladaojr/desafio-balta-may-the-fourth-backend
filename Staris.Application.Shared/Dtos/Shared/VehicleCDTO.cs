@@ -1,6 +1,6 @@
 namespace Staris.Application.Shared.Dtos.Shared;
 
-public class CharacterDto : BaseDto
+public class VehicleCDTO : BaseDTO
 {
 	public string Name { get; set; } = string.Empty;
 }

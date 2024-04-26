@@ -1,9 +1,8 @@
-using Staris.Application.Shared.Dtos;
 using Staris.Application.Shared.Dtos.Shared;
 
-namespace Application.Shared.Dtos;
+namespace Staris.Application.Shared.Dtos;
 
-public class CharacterDto : BaseDto
+public class CharacterDTO : BaseDTO
 {
     public string Name { get; set; } = string.Empty;
     public string Height { get; set; } = string.Empty;
@@ -16,6 +15,6 @@ public class CharacterDto : BaseDto
 
     public PlanetCDTO? Planet { get; set; }
     
-    //public IEnumerable<FilmDto> Movies { get; set; } = 
-      //  Enumerable.Empty<FilmDto>();
+    public IEnumerable<FilmCDTO> Movies { get; set; } = 
+        Enumerable.Empty<FilmCDTO>();
 }

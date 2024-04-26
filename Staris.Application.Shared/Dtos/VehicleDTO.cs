@@ -1,8 +1,8 @@
 using Staris.Application.Shared.Dtos.Shared;
 
-namespace Staris.Application.Shared.Dtos.Vehicle;
+namespace Staris.Application.Shared.Dtos;
 
-public class VehicleDto : BaseDto
+public class VehicleDTO : BaseDTO
 {
 	public string Name { get; set; } = string.Empty;
 	public string Model { get; set; } = string.Empty;
@@ -14,8 +14,7 @@ public class VehicleDto : BaseDto
 	public string Passengers { get; set; } = string.Empty;
 	public string CargoCapacity { get; set; } = string.Empty;
 	public string Class { get; set; } = string.Empty;
-	public IEnumerable<FilmDto> Movies { get; set; } =
-		Enumerable.Empty<FilmDto>();
-
 	public string Consumables { get; set; } = string.Empty;
+	public IEnumerable<FilmCDTO> Movies { get; set; } =
+		Enumerable.Empty<FilmCDTO>();
 }

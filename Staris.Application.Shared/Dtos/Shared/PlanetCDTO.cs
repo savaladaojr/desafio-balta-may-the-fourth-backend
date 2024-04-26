@@ -1,6 +1,6 @@
 namespace Staris.Application.Shared.Dtos.Shared;
 
-public class PlanetDto : BaseDto
+public class PlanetCDTO : BaseDTO
 {
 	public string Name { get; set; } = string.Empty;
 }
