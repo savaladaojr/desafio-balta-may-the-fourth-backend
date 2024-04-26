@@ -1,8 +1,10 @@
-using FluentValidation;
+//using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Staris.Application.Shared.Requests;
 using Staris.Application.UseCases.UserLogin.Commands.ByUserName;
+using Staris.Application.Common.Exceptions;
+using AutoMapper;
 
 namespace Staris.Web.Api.Extensions;
 
@@ -15,11 +17,13 @@ public static class UserLoginMappingExtension
             [AllowAnonymous]
             async (
                 IMediator mediator,
-                IValidator<LoginByUserNameCommand> validator,
+                IMapper mapper,
+                //IValidator<LoginByUserNameCommand> validator,
                 UserLoginRequest request
             ) =>
             {
-                var req = new LoginByUserNameCommand()
+				/*
+				var req = new LoginByUserNameCommand()
                 {
                     UserName = request.UserName,
                     Password = request.Password
@@ -37,6 +41,27 @@ public static class UserLoginMappingExtension
                 else
                 {
                     return Results.Ok(result);
+                }
+                */
+
+				try
+				{
+                    var req = mapper.Map<LoginByUserNameCommand>(request);
+					var result = await mediator.Send(req);
+					if (result.Token != string.Empty)
+					{
+						return Results.Ok(result);
+					}
+
+					return Results.Unauthorized();
+				}
+				catch (ValidationException validationException)
+                {
+					return Results.ValidationProblem(validationException.Errors.ToDictionary());
+                }
+                catch (Exception ex) 
+                {
+                    return Results.BadRequest();
                 }
             }
         );
