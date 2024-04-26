@@ -2,7 +2,7 @@
 using MediatR;
 using Staris.Application.Shared.Responses;
 
-namespace Staris.Application.UserLogin.Commands.ByUserName
+namespace Staris.Application.UseCases.UserLogin.Commands.ByUserName
 {
     public sealed class LoginByUserNameCommandValidator : AbstractValidator<LoginByUserNameCommand>
     {

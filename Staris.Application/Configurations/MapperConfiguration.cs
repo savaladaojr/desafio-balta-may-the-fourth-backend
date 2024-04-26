@@ -1,5 +1,5 @@
-﻿using Application.Shared.Dtos;
-using AutoMapper;
+﻿using AutoMapper;
+using Staris.Application.Shared.Dtos;
 using Staris.Application.Shared.Dtos.Shared;
 using Staris.Domain.Entities;
 

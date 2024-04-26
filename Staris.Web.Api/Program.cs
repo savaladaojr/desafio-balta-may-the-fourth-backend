@@ -1,14 +1,9 @@
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Staris.Application;
-using Staris.Application.Characters.Queries.GetAll;
-using Staris.Application.Characters.Queries.GetById;
 using Staris.Application.Configurations;
-using Staris.Application.Shared.Requests;
-using Staris.Application.UserLogin.Commands.ByUserName;
 using Staris.Domain;
 using Staris.Infra;
 using Staris.Web.Api;
+using Staris.Web.Api.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,43 +42,8 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-
-
-app.MapPost("/security/login", [AllowAnonymous]
-	async (IMediator mediator, UserLoginRequest request) =>
-	{
-		var result = await mediator.Send(new LoginByUserNameCommand() { UserName = request.UserName, Password = request.Password });
-		if (result.Token == string.Empty)
-		{
-			return Results.Unauthorized();
-		}
-		else
-		{
-			return Results.Ok(result);
-		}
-	}
-);
-
-app.MapGet("/Characters/", [AllowAnonymous]
-	async (IMediator mediator) =>
-	{
-		var result = await mediator.Send(new CharacterGetAllQuery());
-		return Results.Ok(result);
-	}
-)
-.WithName("Characters")
-.WithOpenApi();
-
-
-app.MapGet("/Characters/{id:int}", [AllowAnonymous]
-async (IMediator mediator, int id) =>
-{
-	var result = await mediator.Send(new CharacterGetByIdQuery() { Id = id});
-	return Results.Ok(result);
-}
-)
-.WithName("CharactersById")
-.WithOpenApi();
-
+// Mapeamentos dos Requests
+app.AddUserLoginMapping();
+app.AddCharacterRequestMapping();
 
 app.Run();

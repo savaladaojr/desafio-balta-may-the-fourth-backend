@@ -6,7 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Staris.Application.UserLogin.Commands.ByUserName
+namespace Staris.Application.UseCases.UserLogin.Commands.ByUserName
 {
     public sealed class LoginByUserNameCommandHandler : IRequestHandler<LoginByUserNameCommand, UserLoginResponse>
     {
