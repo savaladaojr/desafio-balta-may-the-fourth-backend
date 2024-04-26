@@ -17,12 +17,15 @@ public class FilmGetByIdQueryHandler : IRequestHandler<FilmGetByIdQuery, FilmDTO
         _mapper = mapper;
     }
 
-    public async Task<FilmDTO?> Handle(FilmGetByIdQuery request, CancellationToken cancellationToken)
+    public async Task<FilmDTO?> Handle(
+        FilmGetByIdQuery request,
+        CancellationToken cancellationToken
+    )
     {
         var result = await _filmRepository.GetByIdAsync([request.Id]);
 
-        if (result == null)
-          return null;
+        if (result is null)
+            return null;
 
         var finalResult = _mapper.Map<FilmDTO>(result);
         return finalResult;

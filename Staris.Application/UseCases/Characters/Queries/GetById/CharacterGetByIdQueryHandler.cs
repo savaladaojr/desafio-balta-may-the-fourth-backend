@@ -5,7 +5,8 @@ using Staris.Domain.Interfaces.Repositories;
 
 namespace Staris.Application.UseCases.Characters.Queries.GetById
 {
-    public class CharacterGetByIdQueryHandler : IRequestHandler<CharacterGetByIdQuery, CharacterDTO?>
+    public class CharacterGetByIdQueryHandler
+        : IRequestHandler<CharacterGetByIdQuery, CharacterDTO?>
     {
         private readonly ICharacterRepository _characterRepository;
         private readonly IMapper _mapper;
@@ -23,10 +24,10 @@ namespace Staris.Application.UseCases.Characters.Queries.GetById
             CharacterGetByIdQuery request,
             CancellationToken cancellationToken
         )
-        {						
-            var result = await _characterRepository.GetByIdAsync(new object[] { request.Id });
+        {
+            var result = await _characterRepository.GetByIdAsync([request.Id]);
 
-            if (result == null)
+            if (result is null)
                 return null;
 
             var finalResult = _mapper.Map<CharacterDTO>(result);

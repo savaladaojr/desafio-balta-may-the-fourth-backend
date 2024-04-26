@@ -1,36 +1,36 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Staris.Application.UseCases.Characters.Queries.GetAll;
-using Staris.Application.UseCases.Characters.Queries.GetById;
+using Staris.Application.UseCases.Films.Queries.GetAll;
+using Staris.Application.UseCases.Films.Queries.GetById;
 
 namespace Staris.Web.Api.Extensions;
 
-public static class CharacterRequestsMapping
+public static class FilmRequestsMappingExtension
 {
-    public static void AddCharacterRequestsMapping(this WebApplication app)
+    public static void AddFilmRequestsMapping(this WebApplication app)
     {
         app.MapGet(
-                "/characters/",
+                "/movies",
                 [AllowAnonymous]
                 async (IMediator mediator) =>
                 {
-                    var result = await mediator.Send(new CharactersGetAllQuery());
+                    var result = await mediator.Send(new FilmsGetAllQuery());
                     return Results.Ok(result);
                 }
             )
-            .WithName("Characters")
+            .WithName("Films")
             .WithOpenApi();
 
         app.MapGet(
-                "/characters/{id:int}",
+                "/movies/{id:int}",
                 [AllowAnonymous]
                 async (IMediator mediator, int id) =>
                 {
-                    var result = await mediator.Send(new CharacterGetByIdQuery() { Id = id });
+                    var result = await mediator.Send(new FilmGetByIdQuery { Id = id });
                     return result is not null ? Results.Ok(result) : Results.NotFound();
                 }
             )
-            .WithName("CharactersById")
+            .WithName("FilmById")
             .WithOpenApi();
     }
 }
