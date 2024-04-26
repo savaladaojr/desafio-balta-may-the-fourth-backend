@@ -44,6 +44,10 @@ app.UseAuthorization();
 
 // Mapeamentos dos Requests
 app.AddUserLoginMapping();
-app.AddCharacterRequestMapping();
+app.AddCharacterRequestsMapping();
+app.AddFilmRequestsMapping();
+app.AddPlanetRequestsMapping();
+app.AddStarshipRequestsMapping();
+app.AddVehicleRequestsMapping();
 
 app.Run();

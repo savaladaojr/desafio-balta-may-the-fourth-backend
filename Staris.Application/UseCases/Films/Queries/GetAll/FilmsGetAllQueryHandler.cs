@@ -10,13 +10,16 @@ public class FilmsGetAllQueryHandler : IRequestHandler<FilmsGetAllQuery, IEnumer
     private readonly IFilmRepository _filmRepository;
     private readonly IMapper _mapper;
 
-    public FilmsGetAllQueryHandler(IFilmRepository filmRepository, IMapper mapper)    
+    public FilmsGetAllQueryHandler(IFilmRepository filmRepository, IMapper mapper)
     {
         _filmRepository = filmRepository;
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<FilmDTO>> Handle(FilmsGetAllQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<FilmDTO>> Handle(
+        FilmsGetAllQuery request,
+        CancellationToken cancellationToken
+    )
     {
         var results = await _filmRepository.GetAllAsync();
         var finalResults = _mapper.Map<IEnumerable<FilmDTO>>(results);

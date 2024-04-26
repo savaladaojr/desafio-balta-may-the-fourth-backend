@@ -1,36 +1,37 @@
+using System.Security.Principal;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Staris.Application.UseCases.Characters.Queries.GetAll;
-using Staris.Application.UseCases.Characters.Queries.GetById;
+using Staris.Application.UseCases.Planets.Queries.GetAll;
+using Staris.Application.UseCases.Planets.Queries.GetById;
 
 namespace Staris.Web.Api.Extensions;
 
-public static class CharacterRequestsMapping
+public static class PlanetRequestsMappingExtension
 {
-    public static void AddCharacterRequestsMapping(this WebApplication app)
+    public static void AddPlanetRequestsMapping(this WebApplication app)
     {
         app.MapGet(
-                "/characters/",
+                "/planets",
                 [AllowAnonymous]
                 async (IMediator mediator) =>
                 {
-                    var result = await mediator.Send(new CharactersGetAllQuery());
+                    var result = await mediator.Send(new PlanetsGetAllQuery());
                     return Results.Ok(result);
                 }
             )
-            .WithName("Characters")
+            .WithName("Planets")
             .WithOpenApi();
 
         app.MapGet(
-                "/characters/{id:int}",
+                "/planets/{id:int}",
                 [AllowAnonymous]
                 async (IMediator mediator, int id) =>
                 {
-                    var result = await mediator.Send(new CharacterGetByIdQuery() { Id = id });
+                    var result = await mediator.Send(new PlanetGetByIdQuery { Id = id });
                     return result is not null ? Results.Ok(result) : Results.NotFound();
                 }
             )
-            .WithName("CharactersById")
+            .WithName("PlanetById")
             .WithOpenApi();
     }
 }
