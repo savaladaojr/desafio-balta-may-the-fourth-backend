@@ -10,7 +10,7 @@ public class FilmDTO : BaseDTO
     public string OpeningCrawl { get; set; } = string.Empty;
     public string Director { get; set; } = string.Empty;
     public string Producer { get; set; } = string.Empty;
-    public DateTime ReleaseDate { get; set; }
+    public string ReleaseDate { get; set; } = string.Empty;
     public IEnumerable<CharacterCDTO> Characters { get; set; } =
         Enumerable.Empty<CharacterCDTO>();
     public IEnumerable<PlanetCDTO> Planets { get; set; } =
