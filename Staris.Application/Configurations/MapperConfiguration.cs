@@ -8,7 +8,9 @@ using Staris.Application.Shared.Requests;
 using Staris.Application.UseCases.Characters.Commands.Create;
 using Staris.Application.UseCases.Films.Commands.Create;
 using Staris.Application.UseCases.Planets.Commands.Create;
+using Staris.Application.UseCases.Starships.Commands.Create;
 using Staris.Application.UseCases.UserLogin.Commands.ByUserName;
+using Staris.Application.UseCases.Vehicles.Commands.Create;
 using Staris.Domain.Entities;
 using Staris.Domain.Enumerables;
 using System;
@@ -90,7 +92,7 @@ public class MapperConfiguration : Profile
     {
         //Login Request to Command
         //todo: implementar
-        //CreateMap<VehicleCreateRequest, VehicleCreateCommand>();
+        CreateMap<VehicleCreateRequest, VehicleCreateCommand>();
 
         //Domain to DTO
         CreateMap<Vehicle, VehicleDTO>()
@@ -111,7 +113,7 @@ public class MapperConfiguration : Profile
     {
         //Login Request to Command
         //todo: implementar
-        //CreateMap<StarshipCreateRequest, StarshipCreateCommand>();
+        CreateMap<StarshipCreateRequest, StarshipCreateCommand>();
 
         //Domain to DTO
         CreateMap<Starship, StarshipDTO>()

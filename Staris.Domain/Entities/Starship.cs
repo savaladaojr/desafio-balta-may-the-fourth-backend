@@ -10,5 +10,7 @@ public sealed class Starship
 
     //EF Relation
     public Vehicle? Vehicle { get; init; }
+
+	public List<StarshipFilm>? Films { get; init; } //Filtrar somento os Types == Vehicle
 }
 
