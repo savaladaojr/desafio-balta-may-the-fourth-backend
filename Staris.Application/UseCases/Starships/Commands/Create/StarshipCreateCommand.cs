@@ -1,0 +1,22 @@
+﻿using MediatR;
+using Staris.Application.Shared.Dtos;
+
+namespace Staris.Application.UseCases.Starships.Commands.Create;
+
+public sealed record StarshipCreateCommand(
+	string Name,
+	string Model,
+	string Manufacturer,
+	decimal Cost,
+	decimal Lenght,
+	decimal MaxSpeed,
+	int Crew,
+	int Passengers,
+	decimal CargoCapacity,
+	int Consumables,
+	string Class,
+	decimal HyperdriveRating,
+	int MaximumMegalights
+) : IRequest<StarshipDTO>;
+
+

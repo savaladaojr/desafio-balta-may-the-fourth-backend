@@ -3,6 +3,7 @@ using MediatR;
 using Staris.Application.Data;
 using Staris.Application.Shared.Dtos;
 using Staris.Domain.Entities;
+using Staris.Domain.Enumerables;
 using Staris.Domain.Interfaces.Repositories;
 using System.Reflection;
 
@@ -28,7 +29,7 @@ internal class CharacterCreateCommandHandler : IRequestHandler<CharacterCreateCo
             Name = request.Name,
             BirthYear = request.BirthYear,
             BirthYearPeriod = request.BirthYearPeriod,
-            Gender = (Domain.Enumerables.TypeOfGender)request.Gender, //todo: validar
+            Gender = (TypeOfGender)request.Gender, //todo: validar
             Mass = request.Mass,
             Height = request.Height,
             EyeColor = request.EyeColor,

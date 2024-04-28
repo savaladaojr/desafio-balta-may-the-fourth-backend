@@ -2,7 +2,6 @@
 
 public enum TypeOfVehicle
 {
-    Unknown = 0,
-    Vehicle = 1,
-    Starship = 2
+    Vehicle,
+    Starship
 }
