@@ -1,10 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Staris.Domain.Enumerables;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Staris.Domain.Entities;
 
 namespace Staris.Integration.Processed;
 public class ProcessedUrlFromTypes
@@ -107,16 +103,27 @@ public class ProcessedUrlFromTypes
 
     private static void InsertCharacter(dynamic character)
     {
-        var charas = character;
-        string name = character.name;
-        string height = character.height;
-        string mass = character.mass;
-        string hairColor = character.hair_color;
-        string skinColor = character.skin_color;
-        string gender = character.gender;
         string[] parts = character.homeworld.ToString().Split('/');
         int planetId = Convert.ToInt32(parts[^2]);
-        int homeworld = planetId;
+
+        string birth = character.birth_year;
+        dynamic birthYearPeriod = new string(birth.Where(char.IsLetter).ToArray());
+        dynamic birthYear = Convert.ToDecimal(new string(birth.Where(char.IsDigit).ToArray()));
+
+        Character Character = new Character()
+        {
+            Name = character.name,
+            BirthYear = birthYear,
+            BirthYearPeriod = birthYearPeriod,
+            Gender = (Domain.Enumerables.TypeOfGender)character.gender,
+            Mass = character.mass,
+            Height = character.height,
+            EyeColor = character.eye_color,
+            SkinColor = character.skin_color,
+            HairColor = character.hair_color,
+            HomeWorldId = planetId
+        };
+
         var teste = "";
 
     }
