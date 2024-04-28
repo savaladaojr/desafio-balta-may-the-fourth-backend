@@ -25,7 +25,7 @@ namespace Staris.Application.UseCases.Characters.Queries.GetById
             CancellationToken cancellationToken
         )
         {
-            var result = await _characterRepository.GetByIdAsync([request.Id]);
+            var result = await _characterRepository.GetByIdWithAllData(request.Id);
 
             if (result is null)
                 return null;

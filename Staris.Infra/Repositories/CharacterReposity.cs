@@ -11,12 +11,24 @@ namespace Staris.Infra.Repositories
 		{
 		}
 
-		public List<Character> GetAllWithFilms()
+		public async Task<IEnumerable<Character>> GetAllWithAllData()
 		{
-			var records = Entity.AsNoTracking()
-				.Include(i => i.HomeWorld)
-				.ThenInclude(i => i.Movies).ToList();
+			var records = await Entity.AsNoTracking()
+				.Include(i => i.HomeWorld).IgnoreAutoIncludes()
+				.Include(i => i.Movies).IgnoreAutoIncludes()
+				.ToListAsync();
 			return records;
+		}
+
+		public async Task<Character?> GetByIdWithAllData(int id)
+		{
+			var record = await Entity.AsNoTracking()
+				.Include(i => i.HomeWorld).IgnoreAutoIncludes()
+				.Include(i => i.Movies).IgnoreAutoIncludes()
+				.Where(i => i.Id == id)	
+				.FirstOrDefaultAsync();
+
+			return record;
 		}
 	}
 }
