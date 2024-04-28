@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Web.Api", "Staris.We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Test", "Staris.Test\Staris.Test.csproj", "{3D823718-F944-4216-A57C-8D1C3A4D3610}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Application.Shared", "Application.Shared\Staris.Application.Shared.csproj", "{E979E7EE-6D14-4868-B99D-080EC73EFFBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Application.Shared", "Staris.Application.Shared\Staris.Application.Shared.csproj", "{E979E7EE-6D14-4868-B99D-080EC73EFFBF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staris.Integration", "Staris.Integration\Staris.Integration.csproj", "{6B968626-EFAD-4431-B7BE-1AE36E904F9C}"
 EndProject

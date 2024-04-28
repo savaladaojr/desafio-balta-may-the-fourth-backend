@@ -1,4 +1,5 @@
 ﻿using Staris.Domain.Common;
+using Staris.Domain.Enumerables;
 
 namespace Staris.Domain.Entities;
 
@@ -8,7 +9,7 @@ public sealed class Character : Entity
     public decimal BirthYear { get; set; }
     public string BirthYearPeriod { get; set; } = string.Empty;
     //todo: precisa criar um enum ou armazenar o valor string como na API original
-    public short Gender { get; set; }
+    public TypeOfGender Gender { get; set; }
     public string Mass { get; set; } = string.Empty;
     public string Height { get; set; } = string.Empty;
     public string EyeColor { get; set; } = string.Empty;

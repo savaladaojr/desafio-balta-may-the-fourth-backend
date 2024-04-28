@@ -1,7 +1,8 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Staris.Application.UserLogin.Commands.ByUserName;
+using Staris.Application.Common.Behaviors;
+using Staris.Application.UseCases.UserLogin.Commands.ByUserName;
 using System.Reflection;
 
 namespace Staris.Application;
@@ -22,12 +23,14 @@ public static class ApplicationDependecyInjection
 		{
     		opt.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
 
+            //Adding validator behavior to the Pipeline
+			opt.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
 		});
 
-
 		//Adding Fluent Validation
-		services.AddTransient<IValidator<LoginByUserNameCommand>, LoginByUserNameCommandValidator>();
-
+		//services.AddScoped<IValidator<LoginByUserNameCommand>, LoginByUserNameCommandValidator>();
+		services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
 		return services;
     }

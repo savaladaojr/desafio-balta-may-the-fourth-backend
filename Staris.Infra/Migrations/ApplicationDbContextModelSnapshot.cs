@@ -28,7 +28,7 @@ namespace Staris.Infra.Migrations
 
                     b.Property<string>("BirthYearPeriod")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("numeric");
 
                     b.Property<string>("EyeColor")
                         .IsRequired()
@@ -128,8 +128,8 @@ namespace Staris.Infra.Migrations
                     b.Property<int>("Diameter")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Gravity")
-                        .HasColumnType("integer");
+                    b.Property<decimal>("Gravity")
+                        .HasColumnType("numeric");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -144,8 +144,12 @@ namespace Staris.Infra.Migrations
                     b.Property<int>("RotationPeriod")
                         .HasColumnType("integer");
 
-                    b.Property<int>("SurfaceWater")
-                        .HasColumnType("integer");
+                    b.Property<decimal>("SurfaceWater")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Terrain")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

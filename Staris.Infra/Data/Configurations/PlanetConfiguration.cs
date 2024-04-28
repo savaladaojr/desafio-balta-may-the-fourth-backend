@@ -34,12 +34,16 @@ namespace Staris.Infra.Data.Configurations
                .IsRequired();
 
             builder.Property(p => p.Gravity)
-               .HasColumnType("integer")
-               .IsRequired();
+               .HasColumnType("numeric") //changed to numeric
+			   .IsRequired();
 
-            builder.Property(p => p.SurfaceWater)
-               .HasColumnType("integer")
-               .IsRequired();
+			builder.Property(p => p.Terrain)
+			   .HasColumnType("text")
+			   .IsRequired();
+
+			builder.Property(p => p.SurfaceWater)
+               .HasColumnType("numeric") //changed to numeric
+			   .IsRequired();
 
             builder.Property(p => p.Population)
                .HasColumnType("integer")
