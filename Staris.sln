@@ -19,6 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Test", "Staris.Test\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Application.Shared", "Application.Shared\Staris.Application.Shared.csproj", "{E979E7EE-6D14-4868-B99D-080EC73EFFBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staris.Integration", "Staris.Integration\Staris.Integration.csproj", "{6B968626-EFAD-4431-B7BE-1AE36E904F9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3F1136C5-4045-487A-AEC6-510229C1555B}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +56,10 @@ Global
 		{E979E7EE-6D14-4868-B99D-080EC73EFFBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E979E7EE-6D14-4868-B99D-080EC73EFFBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E979E7EE-6D14-4868-B99D-080EC73EFFBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B968626-EFAD-4431-B7BE-1AE36E904F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B968626-EFAD-4431-B7BE-1AE36E904F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B968626-EFAD-4431-B7BE-1AE36E904F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B968626-EFAD-4431-B7BE-1AE36E904F9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +71,7 @@ Global
 		{DC97F03C-1FC9-4518-AE77-AC89C410E1BC} = {2BCC6D52-3DE4-4377-969D-8E98151EE1EF}
 		{3D823718-F944-4216-A57C-8D1C3A4D3610} = {52F36029-3F14-4C30-A88D-E60536E5C50D}
 		{E979E7EE-6D14-4868-B99D-080EC73EFFBF} = {2BCC6D52-3DE4-4377-969D-8E98151EE1EF}
+		{6B968626-EFAD-4431-B7BE-1AE36E904F9C} = {2BCC6D52-3DE4-4377-969D-8E98151EE1EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A4CC57CC-B105-4FEE-864B-51BA45CC1D76}

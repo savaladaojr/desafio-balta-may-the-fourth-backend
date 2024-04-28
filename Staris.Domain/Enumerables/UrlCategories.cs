@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Staris.Domain.Enumerables;
 public enum EnumUrlCategories
 {
-    People = 1,
+    people = 1,
     planets = 2,
     films = 3,
     vehicles = 4,
-    Species = 5,
-    Starships = 6
+    species = 5,
+    starships = 6
 }
