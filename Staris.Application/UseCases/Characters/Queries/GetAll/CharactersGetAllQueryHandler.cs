@@ -25,7 +25,7 @@ namespace Staris.Application.UseCases.Characters.Queries.GetAll
             CancellationToken cancellationToken
         )
         {
-            var results = await _characterRepository.GetAllAsync();
+            var results = await _characterRepository.GetAllWithAllData();
             var finalResults = _mapper.Map<IEnumerable<CharacterDTO>>(results);
 
             return finalResults;

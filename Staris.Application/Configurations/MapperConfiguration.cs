@@ -1,6 +1,7 @@
 ﻿using Application.Shared.Dtos;
 using Application.Shared.Dtos.Film;
 using AutoMapper;
+using AutoMapper.Execution;
 using Staris.Application.Shared.Dtos;
 using Staris.Application.Shared.Dtos.Shared;
 using Staris.Application.Shared.Requests;
@@ -9,6 +10,8 @@ using Staris.Application.UseCases.Films.Commands.Create;
 using Staris.Application.UseCases.Planets.Commands.Create;
 using Staris.Application.UseCases.UserLogin.Commands.ByUserName;
 using Staris.Domain.Entities;
+using Staris.Domain.Enumerables;
+using System;
 
 namespace Staris.Application.Configurations;
 
@@ -49,17 +52,20 @@ public class MapperConfiguration : Profile
     }
 
     private void CreateMapsForCharacters()
-    {
-        //Login Request to Command
-        CreateMap<CharacterCreateRequest, CharacterCreateCommand>();
+	{
+		CreateMap<TypeOfGender, string>().ConvertUsing(src => src.ToString().ToLower());
 
-        //Domain to DTO
-        CreateMap<Character, CharacterDTO>()
+		//Login Request to Command
+		CreateMap<CharacterCreateRequest, CharacterCreateCommand>();
+
+		//Domain to DTO
+		CreateMap<Character, CharacterDTO>()
 			.ForMember(
 				x => x.BirthYear,
 				opt => opt.MapFrom(d => $"{d.BirthYear.ToString("N2")} {d.BirthYearPeriod}")
 			)
-			.ForMember(x => x.Gender, opt => opt.MapFrom(d => (d.Gender == 0) ? "Male" : "Female"));
+			.ForMember(x => x.Weight, opt => opt.MapFrom(d => d.Mass))
+			.ForMember(x => x.Planet, opt => opt.MapFrom(d => d.HomeWorld));
 
 		//Em casos em que o retorno possui menos informações
 		//Normalmente crio uma DTO compacta para os relacionamentos.
@@ -69,7 +75,7 @@ public class MapperConfiguration : Profile
 	private void CreateMapsForFilms()
     {
         //Login Request to Command
-        CreateMap<FilmCreateRequest, FilmCreateCommand>();
+        CreateMap<FilmCreateRequest, CharacterFilmCreateCommand>();
 
         //Domain to DTO
         CreateMap<Film, FilmDTO>()
@@ -123,4 +129,5 @@ public class MapperConfiguration : Profile
         //Normalmente crio uma DTO compacta para os relacionamentos.
         CreateMap<Starship, StarshipCDTO>();
     }
+
 }

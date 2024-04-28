@@ -28,4 +28,10 @@
     <ProjectReference Include="..\Staris.Domain\Staris.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\Films\Commands\CreateStarshipLink\" />
+    <Folder Include="UseCases\Films\Commands\CreateVehicleLink\" />
+    <Folder Include="UseCases\Planets\Commands\CreateResidentLink\" />
+  </ItemGroup>
+
 </Project>

@@ -5,7 +5,8 @@ namespace Staris.Domain.Interfaces.Repositories
 	public interface ICharacterRepository : IRepository<Character>
 	{
 
-		List<Character> GetAllWithFilms();
+		Task<IEnumerable<Character>> GetAllWithAllData();
+		Task<Character?> GetByIdWithAllData(int id);
 	}
 
 }
