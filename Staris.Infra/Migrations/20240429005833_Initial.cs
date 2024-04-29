@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Staris.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class initial_setup : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,13 +40,38 @@ namespace Staris.Infra.Migrations
                     OrbitalPeriod = table.Column<int>(type: "integer", nullable: false),
                     Diameter = table.Column<int>(type: "integer", nullable: false),
                     Climate = table.Column<string>(type: "text", nullable: false),
-                    Gravity = table.Column<int>(type: "integer", nullable: false),
-                    SurfaceWater = table.Column<int>(type: "integer", nullable: false),
+                    Gravity = table.Column<decimal>(type: "numeric", nullable: false),
+                    Terrain = table.Column<string>(type: "text", nullable: false),
+                    SurfaceWater = table.Column<decimal>(type: "numeric", nullable: false),
                     Population = table.Column<long>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Planets", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vehicles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Model = table.Column<string>(type: "text", nullable: false),
+                    Manufacturer = table.Column<string>(type: "text", nullable: false),
+                    Cost = table.Column<decimal>(type: "real", nullable: false),
+                    Lenght = table.Column<decimal>(type: "real", nullable: false),
+                    MaxSpeed = table.Column<decimal>(type: "real", nullable: false),
+                    Crew = table.Column<int>(type: "integer", nullable: false),
+                    Passengers = table.Column<int>(type: "integer", nullable: false),
+                    CargoCapacity = table.Column<decimal>(type: "real", nullable: false),
+                    Consumables = table.Column<int>(type: "integer", nullable: false),
+                    Class = table.Column<string>(type: "text", nullable: false),
+                    Type = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vehicles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,7 +82,7 @@ namespace Staris.Infra.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "text", nullable: false),
                     BirthYear = table.Column<decimal>(type: "text", nullable: false),
-                    BirthYearPeriod = table.Column<string>(type: "text", nullable: false),
+                    BirthYearPeriod = table.Column<string>(type: "numeric", nullable: false),
                     Gender = table.Column<short>(type: "integer", nullable: false),
                     Mass = table.Column<string>(type: "text", nullable: false),
                     Height = table.Column<string>(type: "text", nullable: false),
@@ -102,50 +127,49 @@ namespace Staris.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Vehicles",
+                name: "Starships",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Model = table.Column<string>(type: "text", nullable: false),
-                    Manufacturer = table.Column<string>(type: "text", nullable: false),
-                    Cost = table.Column<decimal>(type: "real", nullable: false),
-                    Lenght = table.Column<decimal>(type: "real", nullable: false),
-                    MaxSpeed = table.Column<decimal>(type: "real", nullable: false),
-                    Crew = table.Column<int>(type: "integer", nullable: false),
-                    Passengers = table.Column<int>(type: "integer", nullable: false),
-                    CargoCapacity = table.Column<decimal>(type: "real", nullable: false),
-                    Consumables = table.Column<int>(type: "integer", nullable: false),
-                    Class = table.Column<string>(type: "text", nullable: false),
-                    Type = table.Column<int>(type: "integer", nullable: false)
+                    VehicleId = table.Column<int>(type: "INTEGER", nullable: false),
+                    HyperdriveRating = table.Column<decimal>(type: "real", nullable: false),
+                    MaximumMegalights = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vehicles", x => x.Id);
+                    table.PrimaryKey("PK_Starships", x => x.VehicleId);
+                    table.ForeignKey(
+                        name: "fk_Vechicles_Starships",
+                        column: x => x.VehicleId,
+                        principalTable: "Vehicles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "VeichleFilms",
+                columns: table => new
+                {
+                    VehicleId = table.Column<int>(type: "INTEGER", nullable: false),
+                    FilmId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VeichleFilms", x => new { x.FilmId, x.VehicleId });
+                    table.ForeignKey(
+                        name: "FK_VeichleFilms_Films_FilmId",
+                        column: x => x.FilmId,
+                        principalTable: "Films",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_VeichleFilms_Vehicles_VehicleId",
+                        column: x => x.VehicleId,
+                        principalTable: "Vehicles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
-			migrationBuilder.CreateTable(
-				name: "Starships",
-				columns: table => new
-				{
-					VehicleId = table.Column<int>(type: "INTEGER", nullable: false),
-					HyperdriveRating = table.Column<decimal>(type: "real", nullable: false),
-					MaximumMegalights = table.Column<int>(type: "integer", nullable: false)
-				},
-				constraints: table =>
-				{
-					table.PrimaryKey("PK_Starships", x => x.VehicleId);
-					table.ForeignKey(
-	                    name: "fk_Vechicles_Starships",
-	                    column: x => x.VehicleId,
-	                    principalTable: "Vechicles",
-	                    principalColumn: "Id",
-	                    onDelete: ReferentialAction.Cascade);
-				});
-
-			migrationBuilder.CreateTable(
+            migrationBuilder.CreateTable(
                 name: "CharacterFilms",
                 columns: table => new
                 {
@@ -194,26 +218,26 @@ namespace Staris.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VeichleFilms",
+                name: "StarshipFilms",
                 columns: table => new
                 {
-                    VehicleId = table.Column<int>(type: "INTEGER", nullable: false),
+                    StartshipId = table.Column<int>(type: "INTEGER", nullable: false),
                     FilmId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VeichleFilms", x => new { x.FilmId, x.VehicleId });
+                    table.PrimaryKey("PK_StarshipFilms", x => new { x.FilmId, x.StartshipId });
                     table.ForeignKey(
-                        name: "FK_VeichleFilms_Films_FilmId",
+                        name: "FK_StarshipFilms_Films_FilmId",
                         column: x => x.FilmId,
                         principalTable: "Films",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_VeichleFilms_Vehicles_VehicleId",
-                        column: x => x.VehicleId,
-                        principalTable: "Vehicles",
-                        principalColumn: "Id",
+                        name: "FK_StarshipFilms_Starships_StartshipId",
+                        column: x => x.StartshipId,
+                        principalTable: "Starships",
+                        principalColumn: "VehicleId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -238,6 +262,11 @@ namespace Staris.Infra.Migrations
                 column: "FilmId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_StarshipFilms_StartshipId",
+                table: "StarshipFilms",
+                column: "StartshipId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_VeichleFilms_VehicleId",
                 table: "VeichleFilms",
                 column: "VehicleId");
@@ -256,22 +285,25 @@ namespace Staris.Infra.Migrations
                 name: "PlanetFilm");
 
             migrationBuilder.DropTable(
+                name: "StarshipFilms");
+
+            migrationBuilder.DropTable(
                 name: "VeichleFilms");
 
             migrationBuilder.DropTable(
                 name: "Characters");
 
             migrationBuilder.DropTable(
-                name: "Films");
+                name: "Starships");
 
             migrationBuilder.DropTable(
-                name: "Vehicles");
+                name: "Films");
 
             migrationBuilder.DropTable(
                 name: "Planets");
 
             migrationBuilder.DropTable(
-                name: "Starships");
+                name: "Vehicles");
         }
     }
 }

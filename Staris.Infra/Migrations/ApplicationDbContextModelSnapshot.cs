@@ -358,6 +358,18 @@ namespace Staris.Infra.Migrations
                     b.Navigation("Planet");
                 });
 
+            modelBuilder.Entity("Staris.Domain.Entities.Starship", b =>
+                {
+                    b.HasOne("Staris.Domain.Entities.Vehicle", "Vehicle")
+                        .WithOne("Starship")
+                        .HasForeignKey("Staris.Domain.Entities.Starship", "VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_Vechicles_Starships");
+
+                    b.Navigation("Vehicle");
+                });
+
             modelBuilder.Entity("Staris.Domain.Entities.StarshipFilm", b =>
                 {
                     b.HasOne("Staris.Domain.Entities.Film", "Film")
@@ -375,18 +387,6 @@ namespace Staris.Infra.Migrations
                     b.Navigation("Film");
 
                     b.Navigation("Startship");
-                });
-
-            modelBuilder.Entity("Staris.Domain.Entities.Vehicle", b =>
-                {
-                    b.HasOne("Staris.Domain.Entities.Starship", "Starship")
-                        .WithOne("Vehicle")
-                        .HasForeignKey("Staris.Domain.Entities.Vehicle", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_Vechicles_Starships");
-
-                    b.Navigation("Starship");
                 });
 
             modelBuilder.Entity("Staris.Domain.Entities.VehicleFilm", b =>
@@ -436,13 +436,13 @@ namespace Staris.Infra.Migrations
             modelBuilder.Entity("Staris.Domain.Entities.Starship", b =>
                 {
                     b.Navigation("Films");
-
-                    b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("Staris.Domain.Entities.Vehicle", b =>
                 {
                     b.Navigation("Films");
+
+                    b.Navigation("Starship");
                 });
 #pragma warning restore 612, 618
         }

@@ -21,7 +21,7 @@ public class StarshipGetByIdQueryHandler : IRequestHandler<StarshipGetByIdQuery,
         CancellationToken cancellationToken
     )
     {
-        var result = await _starshipRepository.GetByIdAsync([request.Id]);
+        var result = await _starshipRepository.GetByIdWithDataAsync(request.Id);
         if (result is null)
             return null;
 

@@ -21,7 +21,7 @@ public class VehicleGetByIdQueryHandler : IRequestHandler<VehicleGetByIdQuery, V
         CancellationToken cancellationToken
     )
     {
-        var result = await _vehicleRepository.GetByIdAsync([request.Id]);
+        var result = await _vehicleRepository.GetByIdAsync(request.Id);
         if (result is null)
           return null;
 

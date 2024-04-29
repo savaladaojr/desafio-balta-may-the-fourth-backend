@@ -11,8 +11,8 @@ using Staris.Infra.Data;
 namespace Staris.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240425142816_initial_setup")]
-    partial class initial_setup
+    [Migration("20240429005833_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace Staris.Infra.Migrations
 
                     b.Property<string>("BirthYearPeriod")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("numeric");
 
                     b.Property<string>("EyeColor")
                         .IsRequired()
@@ -131,8 +131,8 @@ namespace Staris.Infra.Migrations
                     b.Property<int>("Diameter")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Gravity")
-                        .HasColumnType("integer");
+                    b.Property<decimal>("Gravity")
+                        .HasColumnType("numeric");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -147,8 +147,12 @@ namespace Staris.Infra.Migrations
                     b.Property<int>("RotationPeriod")
                         .HasColumnType("integer");
 
-                    b.Property<int>("SurfaceWater")
-                        .HasColumnType("integer");
+                    b.Property<decimal>("SurfaceWater")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Terrain")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -199,6 +203,21 @@ namespace Staris.Infra.Migrations
                     b.HasKey("VehicleId");
 
                     b.ToTable("Starships", (string)null);
+                });
+
+            modelBuilder.Entity("Staris.Domain.Entities.StarshipFilm", b =>
+                {
+                    b.Property<int>("FilmId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("StartshipId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("FilmId", "StartshipId");
+
+                    b.HasIndex("StartshipId");
+
+                    b.ToTable("StarshipFilms", (string)null);
                 });
 
             modelBuilder.Entity("Staris.Domain.Entities.Vehicle", b =>
@@ -342,16 +361,35 @@ namespace Staris.Infra.Migrations
                     b.Navigation("Planet");
                 });
 
-            modelBuilder.Entity("Staris.Domain.Entities.Vehicle", b =>
+            modelBuilder.Entity("Staris.Domain.Entities.Starship", b =>
                 {
-                    b.HasOne("Staris.Domain.Entities.Starship", "Starship")
-                        .WithOne("Vehicle")
-                        .HasForeignKey("Staris.Domain.Entities.Vehicle", "Id")
+                    b.HasOne("Staris.Domain.Entities.Vehicle", "Vehicle")
+                        .WithOne("Starship")
+                        .HasForeignKey("Staris.Domain.Entities.Starship", "VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_Vechicles_Starships");
 
-                    b.Navigation("Starship");
+                    b.Navigation("Vehicle");
+                });
+
+            modelBuilder.Entity("Staris.Domain.Entities.StarshipFilm", b =>
+                {
+                    b.HasOne("Staris.Domain.Entities.Film", "Film")
+                        .WithMany("Starships")
+                        .HasForeignKey("FilmId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Staris.Domain.Entities.Starship", "Startship")
+                        .WithMany("Films")
+                        .HasForeignKey("StartshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Film");
+
+                    b.Navigation("Startship");
                 });
 
             modelBuilder.Entity("Staris.Domain.Entities.VehicleFilm", b =>
@@ -386,6 +424,8 @@ namespace Staris.Infra.Migrations
 
                     b.Navigation("Planets");
 
+                    b.Navigation("Starships");
+
                     b.Navigation("Vehicles");
                 });
 
@@ -398,12 +438,14 @@ namespace Staris.Infra.Migrations
 
             modelBuilder.Entity("Staris.Domain.Entities.Starship", b =>
                 {
-                    b.Navigation("Vehicle");
+                    b.Navigation("Films");
                 });
 
             modelBuilder.Entity("Staris.Domain.Entities.Vehicle", b =>
                 {
                     b.Navigation("Films");
+
+                    b.Navigation("Starship");
                 });
 #pragma warning restore 612, 618
         }

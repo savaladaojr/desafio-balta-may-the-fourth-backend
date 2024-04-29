@@ -22,7 +22,7 @@ public class StarshipsGetAllQueryHandler
         CancellationToken cancellationToken
     )
     {
-        var results = await _starshipRepository.GetAllAsync();
+        var results = await _starshipRepository.GetAllWithDataAsync();
         var finalResults = _mapper.Map<IEnumerable<StarshipDTO>>(results);
         return finalResults;
     }

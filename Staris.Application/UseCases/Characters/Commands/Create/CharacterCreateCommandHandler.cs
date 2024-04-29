@@ -42,7 +42,10 @@ internal class CharacterCreateCommandHandler : IRequestHandler<CharacterCreateCo
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        var CharacterDTO = _mapper.Map<CharacterDTO>(createCharacter);
+        //Reconsulta para retornar o planeta natal.
+		createCharacter = await _CharacterRepository.GetByIdWithAllData(createCharacter.Id);
+
+		var CharacterDTO = _mapper.Map<CharacterDTO>(createCharacter);
 
         return CharacterDTO;
     }
