@@ -12,5 +12,6 @@ public sealed record VehicleCreateRequest
 	int Passengers,
 	decimal CargoCapacity,
 	int Consumables,
+	string ConsumablesPeriod,
 	string Class
 );

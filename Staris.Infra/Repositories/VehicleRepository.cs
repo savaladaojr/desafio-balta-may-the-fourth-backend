@@ -18,7 +18,7 @@ namespace Staris.Infra.Repositories
 		public override async Task<IEnumerable<Vehicle>> GetAllAsync()
 		{
 			var records = await Entity.AsNoTracking()
-				.Include(i => i.Films).IgnoreAutoIncludes()
+				.Include(i => i.Films).ThenInclude(ti => ti.Film).IgnoreAutoIncludes()
 				.Where(w => w.Type == TypeOfVehicle.Vehicle).ToListAsync();
 			return records;
 		}
@@ -26,7 +26,7 @@ namespace Staris.Infra.Repositories
 		public async Task<Vehicle?> GetByIdAsync(int id)
 		{
 			var record = await Entity.AsNoTracking()
-				.Include(i => i.Films).IgnoreAutoIncludes()
+				.Include(i => i.Films).ThenInclude(ti => ti.Film).IgnoreAutoIncludes()
 				.Where(w => w.Type == TypeOfVehicle.Vehicle && w.Id == id).FirstOrDefaultAsync();
 
 			return record;

@@ -12,6 +12,7 @@ public sealed record StarshipCreateRequest
 	int Passengers,
 	decimal CargoCapacity,
 	int Consumables,
+	string ConsumablesPeriod,
 	string Class,
 	decimal HyperdriveRating,
 	int MaximumMegalights

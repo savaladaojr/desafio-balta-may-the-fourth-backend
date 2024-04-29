@@ -21,7 +21,7 @@ public sealed class Character : Entity
     //EF Relation
     public Planet? HomeWorld { get; init; }
 
-    public List<CharacterFilm>? Movies { get; init; }
+    public List<CharacterFilm>? Films { get; init; }
 
 	public List<PlanetCharacter>? PlanetsOfResidence { get; init; }
 

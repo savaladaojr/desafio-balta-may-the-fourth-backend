@@ -24,6 +24,8 @@ public static class CharacterRequestsMapping
 					return Results.Ok(result);
 				}
 			)
+			.WithTags("Characters")
+			.WithOrder(2)
 			.WithName("Characters")
 			.WithSummary("Return a list of characters")
 			.Produces(TypedResults.Ok().StatusCode, typeof(IEnumerable<CharacterDTO>))
@@ -39,6 +41,8 @@ public static class CharacterRequestsMapping
 					return result is not null ? Results.Ok(result) : Results.NotFound();
 				}
 			)
+			.WithTags("Characters")
+			.WithOrder(2)
 			.WithName("CharactersById}")
 			.WithSummary("Return a character according to ID")
 			.Produces(TypedResults.Ok().StatusCode, typeof(CharacterDTO))
@@ -46,8 +50,8 @@ public static class CharacterRequestsMapping
 
 
 		app.MapPost(
-			"/characters/create",
-			[AllowAnonymous]
+			"/characters",
+			[Authorize]
 		async (
 				IMediator mediator,
 				IMapper mapper,
@@ -70,6 +74,8 @@ public static class CharacterRequestsMapping
 				}
 			}
 		)
+			.WithTags("Characters")
+			.WithOrder(2)
 			.WithName("CharacterCreate}")
 			.WithSummary("Create a new Character")
 			.Produces(TypedResults.Ok().StatusCode, typeof(CharacterDTO))

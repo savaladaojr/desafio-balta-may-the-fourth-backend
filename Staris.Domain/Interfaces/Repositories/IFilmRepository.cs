@@ -1,4 +1,5 @@
-﻿using Staris.Domain.Entities;
+﻿using Staris.Domain.Common;
+using Staris.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace Staris.Domain.Interfaces.Repositories
 {
 	public interface IFilmRepository : IRepository<Film>
 	{
+		Task<IEnumerable<Film>> GetAllWithDataAsync();
+
+		Task<Film?> GetByIdWithDataAsync(int Id);
 	}
 
 }

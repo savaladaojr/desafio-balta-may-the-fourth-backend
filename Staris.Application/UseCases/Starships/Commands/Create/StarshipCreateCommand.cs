@@ -14,6 +14,7 @@ public sealed record StarshipCreateCommand(
 	int Passengers,
 	decimal CargoCapacity,
 	int Consumables,
+	string ConsumablesPeriod,
 	string Class,
 	decimal HyperdriveRating,
 	int MaximumMegalights

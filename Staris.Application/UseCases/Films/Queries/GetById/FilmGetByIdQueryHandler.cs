@@ -22,7 +22,7 @@ public class FilmGetByIdQueryHandler : IRequestHandler<FilmGetByIdQuery, FilmDTO
         CancellationToken cancellationToken
     )
     {
-        var result = await _filmRepository.GetByIdAsync([request.Id]);
+        var result = await _filmRepository.GetByIdWithDataAsync(request.Id);
 
         if (result is null)
             return null;

@@ -21,7 +21,7 @@ namespace Staris.Infra.Data.Configurations
                 .HasConstraintName("fk_films_planets");
 
             builder.HasOne(p => p.Planet)
-                .WithMany(f => f.Movies)
+                .WithMany(f => f.Films)
                 .HasForeignKey(pf => pf.PlanetId)
                 .HasConstraintName("fk_planets_films");
 

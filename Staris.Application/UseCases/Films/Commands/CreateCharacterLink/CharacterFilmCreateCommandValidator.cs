@@ -22,18 +22,18 @@ public sealed class CharacterFilmCreateCommandValidator : AbstractValidator<Char
 		_characterRepository = characterRepository;
 
 		RuleFor(p => p.FilmId)
-			.Equal(0).WithName("Provide the Film.")
+			.NotEqual(0).WithName("Provide the Film.")
 			.Must(filmId => CheckFilmExists(filmId)).WithMessage("Inform an existent Film.");
 
 		RuleFor(p => p.CharacterId)
-			.Equal(0).WithName("Provide the Character.")
+			.NotEqual(0).WithName("Provide the Character.")
 			.Must(characterId => CheckCharacterExists(characterId)).WithMessage("Inform an existent Character.");
 
 	}
 
 	private bool CheckFilmExists(int filmId)
 	{
-		var film = _filmRepository.GetByIdAsync(new object[] { filmId });
+		var film = _filmRepository.GetByIdAsync(new object[] { filmId }).Result;
 
 		if (film == null) return false;
 
@@ -42,7 +42,7 @@ public sealed class CharacterFilmCreateCommandValidator : AbstractValidator<Char
 
 	private bool CheckCharacterExists(int characterId)
 	{
-		var character = _characterRepository.GetByIdAsync(new object[] { characterId });
+		var character = _characterRepository.GetByIdAsync(new object[] { characterId }).Result;
 
 		if (character == null) return false;
 

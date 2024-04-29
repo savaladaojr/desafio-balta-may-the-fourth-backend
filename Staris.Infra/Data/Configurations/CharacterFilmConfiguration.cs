@@ -16,7 +16,7 @@ namespace Staris.Infra.Data.Configurations
                 .IsRequired();
 
 			builder.HasOne(c => c.Character)
-                .WithMany(f => f.Movies)
+                .WithMany(f => f.Films)
                 .HasForeignKey(cf => cf.CharacterId)
                 .HasConstraintName("fk_characters_films")
                 .HasPrincipalKey(pk => pk.Id);
