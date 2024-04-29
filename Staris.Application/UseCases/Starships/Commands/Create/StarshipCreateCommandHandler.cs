@@ -31,7 +31,7 @@ internal class StarshipCreateCommandHandler : IRequestHandler<StarshipCreateComm
 	{
 		var vechicle = new Vehicle()
 		{
-			Type = TypeOfVehicle.Vehicle,
+			Type = TypeOfVehicle.Starship,
 			Name = request.Name,
 			Model = request.Model,
 			Manufacturer = request.Manufacturer,
