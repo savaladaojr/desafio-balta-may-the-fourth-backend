@@ -25,7 +25,8 @@ namespace Staris.Infra.Data.Configurations
 
 			builder.HasOne(p => p.Vehicle)
 				.WithOne(o => o.Starship)
-				.HasForeignKey<Vehicle>(pf => pf.Id)
+				.HasForeignKey<Starship>(pf => pf.VehicleId)
+                .HasPrincipalKey<Vehicle>(k => k.Id)
 				.HasConstraintName("fk_Vechicles_Starships");
 
 			builder.ToTable("Starships");

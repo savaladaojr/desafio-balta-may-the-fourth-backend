@@ -42,23 +42,20 @@ internal class StarshipCreateCommandHandler : IRequestHandler<StarshipCreateComm
 			Passengers = request.Passengers,
 			CargoCapacity = request.CargoCapacity,
 			Consumables = request.Consumables,
-			Class = request.Class,
-		};
+			Class = request.Class
+	};
 
 		var createdVechicle = _vehicleRepository.Create(vechicle);
 
-
 		var starship = new Starship()
 		{
-			VehicleId = createdVechicle.Id,
 			HyperdriveRating = request.HyperdriveRating,
 			MaximumMegalights = request.MaximumMegalights,
 			Vehicle = createdVechicle
+			
 		};
 
 		_starshipRepository.Create(starship);
-
-
 		await _unitOfWork.SaveChangesAsync(cancellationToken);
 
 

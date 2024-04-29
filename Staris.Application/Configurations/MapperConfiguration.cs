@@ -117,14 +117,19 @@ public class MapperConfiguration : Profile
 
         //Domain to DTO
         CreateMap<Starship, StarshipDTO>()
-            .ForMember(d => d.CostInCredits, opt => opt.MapFrom(s => s.Vehicle!.Cost.ToString()))
+			.ForMember(d => d.Id, opt => opt.MapFrom(s => s.VehicleId))
+			.ForMember(d => d.Name , opt => opt.MapFrom(s => s.Vehicle!.Name.ToString()))
+			.ForMember(d => d.Model, opt => opt.MapFrom(s => s.Vehicle!.Model.ToString()))
+			.ForMember(d => d.Manufacturer, opt => opt.MapFrom(s => s.Vehicle!.Manufacturer.ToString()))
+			.ForMember(d => d.CostInCredits, opt => opt.MapFrom(s => s.Vehicle!.Cost.ToString()))
             .ForMember(d => d.Length, opt => opt.MapFrom(s => $"{s.Vehicle!.Lenght.ToString("N2")} meters"))
             .ForMember(d => d.MaxSpeed, opt => opt.MapFrom(s => $"{s.Vehicle!.MaxSpeed.ToString("N2")} km/h"))
             .ForMember(d => d.Crew, opt => opt.MapFrom(s => s.Vehicle!.Crew.ToString()))
             .ForMember(d => d.Passengers, opt => opt.MapFrom(s => s.Vehicle!.Passengers.ToString()))
             .ForMember(d => d.CargoCapacity, opt => opt.MapFrom(s => $"{s.Vehicle!.CargoCapacity.ToString("N2")} kg"))
             .ForMember(d => d.Consumables, opt => opt.MapFrom(s => $"{s.Vehicle!.Consumables} years"))
-            .ForMember(d => d.HyperdriveRating, opt => opt.MapFrom(s => s.HyperdriveRating.ToString()))
+			.ForMember(d => d.Class, opt => opt.MapFrom(s => s.Vehicle!.Class))
+			.ForMember(d => d.HyperdriveRating, opt => opt.MapFrom(s => s.HyperdriveRating.ToString()))
             .ForMember(d => d.Mglt, opt => opt.MapFrom(s => s.MaximumMegalights.ToString()));
 
         //Em casos em que o retorno possui menos informações
