@@ -24,7 +24,9 @@ public static class StarshipRequestsMapping
                     return Results.Ok(result);
                 }
             )
-            .WithName("Starships")
+			.WithTags("Starships")
+			.WithOrder(4)
+			.WithName("Starships")
 			.WithSummary("Return a list of Starships")
 			.Produces(TypedResults.Ok().StatusCode, typeof(IEnumerable<StarshipDTO>))
 			.WithOpenApi();
@@ -39,15 +41,17 @@ public static class StarshipRequestsMapping
                     return result is not null ? Results.Ok(result) : Results.NotFound();
                 }
             )
-            .WithName("StarshipById")
+			.WithTags("Starships")
+			.WithOrder(4)
+			.WithName("StarshipById")
 			.WithSummary("Return a starship according to ID")
 			.Produces(TypedResults.Ok().StatusCode, typeof(StarshipDTO))
 			.WithOpenApi();
 
 
 		app.MapPost(
-			"/starships/create",
-			[AllowAnonymous]
+			"/starships",
+			[Authorize]
 		async (
 				IMediator mediator,
 				IMapper mapper,
@@ -70,7 +74,9 @@ public static class StarshipRequestsMapping
 				}
 			}
 		)
-			.WithName("StarshipCreate}")
+			.WithTags("Starships")
+			.WithOrder(4)
+			.WithName("CreateCharacterLink}")
 			.WithSummary("Create a new Starship")
 			.Produces(TypedResults.Ok().StatusCode, typeof(StarshipDTO))
 			.WithOpenApi();

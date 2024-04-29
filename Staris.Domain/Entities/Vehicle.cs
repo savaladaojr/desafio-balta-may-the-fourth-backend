@@ -15,7 +15,8 @@ public class Vehicle : Entity
     public int Passengers { get; set; }
     public decimal CargoCapacity { get; set; }
     public int Consumables { get; set; }
-    public string Class { get; set; } = string.Empty;
+	public string ConsumablesPeriod { get; set; }
+	public string Class { get; set; } = string.Empty;
 
     public TypeOfVehicle Type { get; set; }
 

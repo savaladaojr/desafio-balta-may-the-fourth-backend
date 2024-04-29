@@ -21,7 +21,7 @@ public class PlanetsGetAllQueryHandler : IRequestHandler<PlanetsGetAllQuery, IEn
         CancellationToken cancellationToken
     )
     {
-        var results = await _planetRepository.GetAllAsync();
+        var results = await _planetRepository.GetAllWithDataAsync();
         var finalResults = _mapper.Map<IEnumerable<PlanetDTO>>(results);
         return finalResults;
     }

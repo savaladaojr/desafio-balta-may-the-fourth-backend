@@ -9,7 +9,6 @@ using Staris.Web.Api.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 //Adding Application Settings to the services.
 builder.Services.Configure<ApplicationSettings>(builder.Configuration.GetSection("ApplicationSettings"));
 
@@ -25,6 +24,17 @@ builder.Services.AddInfraDependencyInjection(builder.Configuration);
 builder.Services.AddSwaggerDependencyInjection();
 builder.Services.AddAuthenticationJWTBearer();
 builder.Services.AddAuthorization();
+
+//Adding CORS Policy
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("StarisForce", cors =>
+	{
+		cors.AllowAnyOrigin()
+		.AllowAnyMethod()
+		.AllowAnyHeader();
+	});
+});
 
 var app = builder.Build();
 
@@ -42,12 +52,17 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Mapeamentos dos Requests
+app.UseCors("StarisForce");
+
+// Mapeamentos dos Endpoint da API
+app.AddHomeMapping();
 app.AddUserLoginMapping();
 app.AddCharacterRequestsMapping();
-app.AddFilmRequestsMapping();
 app.AddPlanetRequestsMapping();
-app.AddStarshipRequestsMapping();
 app.AddVehicleRequestsMapping();
+app.AddStarshipRequestsMapping();
+app.AddFilmRequestsMapping();
+
+
 
 app.Run();

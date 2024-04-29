@@ -21,7 +21,7 @@ public class PlanetGetAllQueryHandler : IRequestHandler<PlanetGetByIdQuery, Plan
         CancellationToken cancellationToken
     )
     {
-        var result = await _planetRepository.GetByIdAsync([request.Id]);
+        var result = await _planetRepository.GetByIdWithDataAsync(request.Id);
 
         if (result is null)
             return null;

@@ -48,6 +48,10 @@ namespace Staris.Infra.Data.Configurations
                 .HasColumnType("integer")
                 .IsRequired();
 
+            builder.Property(v => v.ConsumablesPeriod)
+                .HasColumnType("text")
+                .IsRequired();
+
             builder.Property(v => v.Class)
                 .HasColumnType("text")
                 .IsRequired();

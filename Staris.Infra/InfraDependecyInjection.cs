@@ -24,15 +24,16 @@ public static class InfraDependecyInjection
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-		services.AddScoped<ICharacterFilmRepository, CharacterFilmRepository>();
 		services.AddScoped<ICharacterRepository, CharacterRepository>();
-		services.AddScoped<IFilmRepository, FilmRepository>();
-		services.AddScoped<IVehicleFilmRepository, VehicleFilmRepository>();
-		services.AddScoped<IPlanetCharacterRepository, PlanetCharacterRepository>();
-		services.AddScoped<IPlanetFilmRepository, PlanetFilmRepository>();
 		services.AddScoped<IPlanetRepository, PlanetRepository>();
-		services.AddScoped<IStarshipRepository, StarshipRepository>();
+		services.AddScoped<IPlanetCharacterRepository, PlanetCharacterRepository>();
+		services.AddScoped<IFilmRepository, FilmRepository>();
 		services.AddScoped<IVehicleRepository, VehicleRepository>();
+		services.AddScoped<IStarshipRepository, StarshipRepository>();
+		services.AddScoped<ICharacterFilmRepository, CharacterFilmRepository>();
+		services.AddScoped<IVehicleFilmRepository, VehicleFilmRepository>();
+		services.AddScoped<IStarshipFilmRepository, StarshipFilmRepository>();
+		services.AddScoped<IPlanetFilmRepository, PlanetFilmRepository>();
 
 		return services;
     }

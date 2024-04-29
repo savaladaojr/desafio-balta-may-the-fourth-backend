@@ -14,7 +14,7 @@ namespace Staris.Infra.Repositories
 		public async Task<IEnumerable<Starship>> GetAllWithDataAsync()
 		{
 			var starships = await Entity.Include(i => i.Vehicle).IgnoreAutoIncludes()
-				.Include(i => i.Films).IgnoreAutoIncludes()
+				.Include(i => i.Films).ThenInclude(ti => ti.Film).IgnoreAutoIncludes()
 				.ToListAsync();
 
 			return starships;
@@ -23,7 +23,7 @@ namespace Staris.Infra.Repositories
 		public async  Task<Starship?> GetByIdWithDataAsync(int id)
 		{
 			var starship = await Entity.Include(i => i.Vehicle).IgnoreAutoIncludes()
-				.Include(i => i.Films).IgnoreAutoIncludes()
+				.Include(i => i.Films).ThenInclude(ti => ti.Film) .IgnoreAutoIncludes()
 				.Where(w => w.VehicleId == id)
 				.FirstOrDefaultAsync();
 

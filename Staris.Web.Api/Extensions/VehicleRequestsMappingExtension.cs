@@ -24,7 +24,9 @@ public static class VehicleRequestsMappingExtension
                     return Results.Ok(result);
                 }
             )
-            .WithName("Vehicles")
+			.WithTags("Vehicles")
+			.WithOrder(3)
+			.WithName("Vehicles")
 			.WithSummary("Return a list of Vehicles")
 			.Produces(TypedResults.Ok().StatusCode, typeof(IEnumerable<VehicleDTO>))
 			.WithOpenApi();
@@ -39,15 +41,17 @@ public static class VehicleRequestsMappingExtension
                     return result is not null ? Results.Ok(result) : Results.NotFound();
                 }
             )
-            .WithName("VehicleById")
+			.WithTags("Vehicles")
+			.WithOrder(3)
+			.WithName("VehicleById")
 			.WithSummary("Return a vehicle according to ID")
 			.Produces(TypedResults.Ok().StatusCode, typeof(VehicleDTO))
 			.WithOpenApi();
 
 
 		app.MapPost(
-			"/vehicles/create",
-			[AllowAnonymous]
+			"/vehicles",
+			[Authorize]
 		async (
 				IMediator mediator,
 				IMapper mapper,
@@ -70,6 +74,8 @@ public static class VehicleRequestsMappingExtension
 				}
 			}
 		)
+			.WithTags("Vehicles")
+			.WithOrder(3)
 			.WithName("VehicleCreate}")
 			.WithSummary("Create a new Vehicle")
 			.Produces(TypedResults.Ok().StatusCode, typeof(VehicleDTO))

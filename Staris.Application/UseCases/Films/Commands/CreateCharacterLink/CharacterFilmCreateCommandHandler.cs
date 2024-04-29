@@ -33,11 +33,11 @@ internal class CharacterFilmCreateCommandHandler : IRequestHandler<CharacterFilm
             FilmId = request.FilmId
         };
 
-        var createFilm = _characterFilmRepository.Create(characterFilm);
+        var created = _characterFilmRepository.Create(characterFilm);
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        var film = await _filmRepository.GetByIdAsync(new object[] { characterFilm.FilmId });
+        var film = await _filmRepository.GetByIdWithDataAsync(characterFilm.FilmId);
 		var FilmDTO = _mapper.Map<FilmDTO>(film);
 
         return FilmDTO;

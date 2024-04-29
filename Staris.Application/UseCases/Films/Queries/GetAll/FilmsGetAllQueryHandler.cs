@@ -21,7 +21,7 @@ public class FilmsGetAllQueryHandler : IRequestHandler<FilmsGetAllQuery, IEnumer
         CancellationToken cancellationToken
     )
     {
-        var results = await _filmRepository.GetAllAsync();
+        var results = await _filmRepository.GetAllWithDataAsync();
         var finalResults = _mapper.Map<IEnumerable<FilmDTO>>(results);
         return finalResults;
     }

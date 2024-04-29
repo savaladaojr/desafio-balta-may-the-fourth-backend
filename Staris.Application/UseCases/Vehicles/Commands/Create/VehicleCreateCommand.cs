@@ -15,6 +15,7 @@ public sealed record VehicleCreateCommand(
 	int Passengers,
 	decimal CargoCapacity,
 	int Consumables,
+	string ConsumablesPeriod,
 	string Class
 ) : IRequest<VehicleDTO>;
 
