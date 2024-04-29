@@ -1,11 +1,26 @@
 ﻿using Newtonsoft.Json;
 using Staris.Domain.Enumerables;
 using Staris.Domain.Entities;
+using AutoMapper;
+using Staris.Domain.Interfaces.Repositories;
+using Staris.Application.Data;
+using Staris.Infra.Repositories;
 
 namespace Staris.Integration.Processed;
 public class ProcessedUrlFromTypes
 {
+    private readonly IMapper _mapper;
+    private readonly ICharacterRepository _CharacterRepository;
+    private readonly IUnitOfWork _unitOfWork;
+
     private static readonly HttpClient client = new HttpClient();
+
+    public ProcessedUrlFromTypes(ICharacterRepository characterRepository, IUnitOfWork unitOfWork)
+    {
+        _CharacterRepository = characterRepository;
+        _unitOfWork = unitOfWork;
+    }
+
     public async Task ProcessedUrlFromType(dynamic obj)
     {
         while (obj != null)
@@ -59,7 +74,7 @@ public class ProcessedUrlFromTypes
     /// <param name="name"></param>
     /// <param name="totalItens"></param>
     /// <returns></returns>
-    private static async Task Details(string url, string name, int totalItens)
+    private async Task Details(string url, string name, int totalItens)
     {
         for (int i = 1; i <= totalItens; i++)
         {
@@ -97,11 +112,9 @@ public class ProcessedUrlFromTypes
 
             }
         }
-
-
     }
 
-    private static void InsertCharacter(dynamic character)
+    private async void InsertCharacter(dynamic character)
     {
         string[] parts = character.homeworld.ToString().Split('/');
         int planetId = Convert.ToInt32(parts[^2]);
@@ -110,7 +123,7 @@ public class ProcessedUrlFromTypes
         dynamic birthYearPeriod = new string(birth.Where(char.IsLetter).ToArray());
         dynamic birthYear = Convert.ToDecimal(new string(birth.Where(char.IsDigit).ToArray()));
 
-        Character Character = new Character()
+        Character newCharacter = new Character()
         {
             Name = character.name,
             BirthYear = birthYear,
@@ -123,6 +136,9 @@ public class ProcessedUrlFromTypes
             HairColor = character.hair_color,
             HomeWorldId = planetId
         };
+
+        var createCharacter = _CharacterRepository.Create(newCharacter);
+        await _unitOfWork.SaveChangesAsync();
 
         var teste = "";
 

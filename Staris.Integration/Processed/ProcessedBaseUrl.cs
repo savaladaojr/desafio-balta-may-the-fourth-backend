@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using AutoMapper;
+using Newtonsoft.Json;
+using Staris.Application.Data;
+using Staris.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +13,18 @@ public class ProcessedBaseUrl
 {
     private static readonly HttpClient client = new HttpClient();
 
+    private readonly ICharacterRepository _characterRepository;
+    private readonly IUnitOfWork _unitOfWork;
+
+    public ProcessedBaseUrl( ICharacterRepository characterRepository, IUnitOfWork unitOfWork)
+    {
+        _characterRepository = characterRepository;
+        _unitOfWork = unitOfWork;
+    }
+
     public async Task ProcessedBase(string baseUrl)
     {
-        ProcessedUrlFromTypes type = new();
+        ProcessedUrlFromTypes type = new ProcessedUrlFromTypes( _characterRepository, _unitOfWork);
         while (!string.IsNullOrEmpty(baseUrl))
         {
             var jsonData = await FetchData(baseUrl);
@@ -22,8 +34,7 @@ public class ProcessedBaseUrl
                 {
                     await type.ProcessedUrlFromType(url);
                 }
-                // Suponha que exista algum processamento aqui
-                baseUrl = null; // Atualize a condição para sair do loop, se necessário
+                baseUrl = null; 
             }
             else
             {
