@@ -14,7 +14,7 @@ public interface IApplicationDbContext
 	DbSet<Starship> Starships { get; set; }
 	DbSet<Vehicle> Vehicles { get; set; }
 	DbSet<VehicleFilm> VehicleFilms { get; set; }
-
+	DbSet<StarshipFilm> StarshipFilms { get; set; }
 
 	Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 

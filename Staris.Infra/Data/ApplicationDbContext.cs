@@ -16,10 +16,10 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWor
     public DbSet<Starship> Starships { get; set; }
     public DbSet<Vehicle> Vehicles { get; set; }
     public DbSet<VehicleFilm> VehicleFilms { get; set; }
+	public DbSet<StarshipFilm> StarshipFilms { get; set; }
 
 
-
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+	public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
 

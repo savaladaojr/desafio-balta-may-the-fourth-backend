@@ -50,19 +50,6 @@ namespace Staris.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Starships",
-                columns: table => new
-                {
-                    VehicleId = table.Column<int>(type: "INTEGER", nullable: false),
-                    HyperdriveRating = table.Column<decimal>(type: "real", nullable: false),
-                    MaximumMegalights = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Starships", x => x.VehicleId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Characters",
                 columns: table => new
                 {
@@ -136,15 +123,29 @@ namespace Staris.Infra.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vehicles", x => x.Id);
-                    table.ForeignKey(
-                        name: "fk_Vechicles_Starships",
-                        column: x => x.Id,
-                        principalTable: "Starships",
-                        principalColumn: "VehicleId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+
+			migrationBuilder.CreateTable(
+				name: "Starships",
+				columns: table => new
+				{
+					VehicleId = table.Column<int>(type: "INTEGER", nullable: false),
+					HyperdriveRating = table.Column<decimal>(type: "real", nullable: false),
+					MaximumMegalights = table.Column<int>(type: "integer", nullable: false)
+				},
+				constraints: table =>
+				{
+					table.PrimaryKey("PK_Starships", x => x.VehicleId);
+					table.ForeignKey(
+	                    name: "fk_Vechicles_Starships",
+	                    column: x => x.VehicleId,
+	                    principalTable: "Vechicles",
+	                    principalColumn: "Id",
+	                    onDelete: ReferentialAction.Cascade);
+				});
+
+			migrationBuilder.CreateTable(
                 name: "CharacterFilms",
                 columns: table => new
                 {
