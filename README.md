@@ -5,24 +5,33 @@
 ## 🎖️ Desafio
 **May the Fourth** é a quarta edição dos **Desafios .NET** realizados pelo [balta.io](https://balta.io). Durante esta jornada, fizemos parte do batalhão backend onde unimos forças para entregar um App completo.
 
-## 📱 Projeto
-Desenvolvimento de uma API completa, fornecendo recursos como criação, leitura, atualização e exclusão de dados referentes ao universo **Star Wars**.
+## 🖍 Projeto
+O projeto trata-se do desenvolvimento de uma API completa, fornecendo recursos como criação, leitura, atualização e exclusão de dados referentes ao universo **Star Wars**.
+A API possui dados disponíveis sobre Filmes, Personagens, Naves Estrelares, Veículos e Planetas. 
 
 ## Participantes
 ### 🚀 Capitão
 Sergio Valadão Junior - [Github](https://github.com/savaladaojr/)
 
 ### 💂‍♀️ Batalhão
-* André Rodrigues - [Github](https://github.com/savaladaojr/desafio-balta-may-the-fourth-backend)
-* Augusto Rengel - [Github](https://github.com/savaladaojr/desafio-balta-may-the-fourth-backend)
-* Jonathan Igor Bockorny Pereira - [Github](https://github.com/savaladaojr/desafio-balta-may-the-fourth-backend)
-* Lucas  - [Github](https://github.com/savaladaojr/desafio-balta-may-the-fourth-backend)
+* André Rodrigues - [Github](https://github.com/andregr15)
+* Augusto Rengel - [Github](https://github.com/AugustoRengel)
+* Jonathan Igor Bockorny Pereira - [Github](https://github.com/jonathanigorpereira)
+* Lucas M. Pires - [Github](https://github.com/lucas-mpi)
 
 ## ⚙️ Tecnologias
 * C# 12
 * .NET 8
 * ASP.NET
 * Minimal APIs
+* FluentValidation
+* Mediator
+
+## 📱 Arquitetura, Design Patterns e Infraestrutura
+* Clean Architecture
+* Repository Pattern
+* CQRS Pattern
+* Mediator Pattern
 
 ## 🥋 Skills Desenvolvidas
 * Comunicação
