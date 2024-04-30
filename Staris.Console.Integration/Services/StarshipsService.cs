@@ -45,7 +45,7 @@ public class StarshipsService : IService
                 Model = item.model,
                 Manufacturer = item.manufacturer,
                 Cost = Util.TryParseDecimal(item.cost_in_credits),
-                Lenght = Util.TryParseDecimal(item.lentgh),
+                Lenght = Util.TryParseDecimal(item.length),
                 MaxSpeed = Util.TryParseDecimal(item.max_atmosphering_speed),
                 Crew = item.crew,
                 Passengers = Util.TryParseInt(item.passengers),
@@ -53,6 +53,7 @@ public class StarshipsService : IService
                 Consumables = consumables,
                 ConsumablesPeriod = consumablePeriod,
                 Class = item.starship_class,
+                Type = Domain.Enumerables.TypeOfVehicle.Starship
             };
 
             var starship = new Starship
