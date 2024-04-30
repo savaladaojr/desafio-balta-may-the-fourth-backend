@@ -1,4 +1,6 @@
-﻿public record specieResult(
+﻿namespace Staris.Console.Integration.Models;
+
+public record specieResult(
 	int count,
 	string? next,
 	string? previous,
@@ -11,7 +13,7 @@ public record specieSTF(string average_height,
 	string designation,
 	string eye_colors,
 	string hair_colors,
-    string skin_colors,
+  string skin_colors,
 	string homeworld,
 	string language,
 	string name,

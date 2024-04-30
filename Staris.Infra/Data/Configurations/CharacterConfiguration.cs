@@ -27,7 +27,7 @@ namespace Staris.Infra.Data.Configurations
 				.IsRequired();
 
 			builder.Property(p => p.Gender)
-				.HasColumnType("integer")
+				.HasColumnType("text")
 				.IsRequired();
 
 			builder.Property(p => p.Mass)

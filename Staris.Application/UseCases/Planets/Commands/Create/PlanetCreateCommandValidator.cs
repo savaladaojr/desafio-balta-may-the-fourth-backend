@@ -23,9 +23,7 @@ public sealed class PlanetCreateCommandValidator : AbstractValidator<PlanetCreat
 			.NotEmpty().WithMessage("Enter the Planet Climate. If the climate of this planet varies, separate the different climates with commas.");
 
 		RuleFor(p => p.Gravity)
-			.GreaterThan(0).WithMessage("Inform a number denoting the gravity of this planet, where \"1\" is normal or 1 standard G. \"2\" is twice or 2 standard Gs. \"0.5\" is half or 0.5 standard Gs.")
-			.Must(number => !number.Equals(1) || !number.Equals(2) || !number.Equals(0.5))
-				.WithMessage("the gravity must be \"1\" for normal or 1 standard G. \"2\" for twice or 2 standard Gs. \"0.5\" for half or 0.5 standard Gs.");
+			.NotEmpty().WithMessage("Enter the Planet Gravity. If the gravity of this planet varies, separate the different gravities with commas.");
 
 		RuleFor(p => p.Terrain)
 			.NotEmpty().WithMessage("Enter the Planet Terrain. If the terrain of this planet varies, separate the different terrains with commas.");

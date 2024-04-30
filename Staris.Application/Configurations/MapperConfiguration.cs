@@ -67,7 +67,7 @@ public class MapperConfiguration : Profile
 		CreateMap<Character, CharacterDTO>()
 			.ForMember(
 				x => x.BirthYear,
-				opt => opt.MapFrom(d => $"{d.BirthYear.ToString("N2")} {d.BirthYearPeriod}")
+				opt => opt.MapFrom(d => d.BirthYear)
 			)
 			.ForMember(x => x.Weight, opt => opt.MapFrom(d => d.Mass))
 			.ForMember(x => x.Planet, opt => opt.MapFrom(d => d.HomeWorld))

@@ -1,4 +1,6 @@
-﻿public record peopleResult(
+﻿namespace Staris.Console.Integration.Models;
+
+public record peopleResult(
 	int count,
 	string? next,
 	string? previous,
@@ -15,5 +17,8 @@ public record peopleSTF(string name,
 	string gender,
 	string homeworld,
     //string species,
-	string url
+	string url,
+	IEnumerable<string> films,
+	IEnumerable<string> vehicles,
+	IEnumerable<string> starships
 );

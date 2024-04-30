@@ -11,7 +11,7 @@ public sealed record VehicleCreateCommand(
 	decimal Cost,
 	decimal Lenght,
 	decimal MaxSpeed,
-	int Crew,
+	string Crew,
 	int Passengers,
 	decimal CargoCapacity,
 	int Consumables,

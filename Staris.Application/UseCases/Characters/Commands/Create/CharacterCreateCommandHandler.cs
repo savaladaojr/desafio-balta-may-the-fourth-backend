@@ -29,7 +29,7 @@ internal class CharacterCreateCommandHandler : IRequestHandler<CharacterCreateCo
             Name = request.Name,
             BirthYear = request.BirthYear,
             BirthYearPeriod = request.BirthYearPeriod,
-            Gender = (TypeOfGender)request.Gender, //todo: validar
+            Gender = request.Gender, //todo: validar
             Mass = request.Mass,
             Height = request.Height,
             EyeColor = request.EyeColor,
