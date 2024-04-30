@@ -70,7 +70,7 @@ public static class UserLoginMappingExtension
 			.WithName("SecurityLoginByUserName}")
 			.WithSummary("Authenticate an user.")
             .WithDescription("Uses Admin as username and 12345678 as password to obtain a JWT token. Use the Token to allow the Post, Put and Delete Methods.")
-            .WithOpenApi();
+            .WithOpenApi().ExcludeFromDescription();
 
-    }
+	}
 }
