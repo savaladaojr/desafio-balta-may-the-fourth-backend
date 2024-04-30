@@ -34,7 +34,7 @@ namespace Staris.Infra.Data.Configurations
                .IsRequired();
 
             builder.Property(p => p.Gravity)
-               .HasColumnType("numeric") //changed to numeric
+               .HasColumnType("text") //changed to numeric
 			   .IsRequired();
 
 			builder.Property(p => p.Terrain)

@@ -15,8 +15,8 @@ namespace Staris.Infra.Repositories
 		public async Task<IEnumerable<Planet>> GetAllWithDataAsync()
 		{
 			var records = await Entity.AsNoTracking()
-							.Include(i => i.Residents).IgnoreAutoIncludes()
-							.Include(i => i.Films).IgnoreAutoIncludes()
+							.Include(i => i.Residents).ThenInclude(ti => ti.Character).IgnoreAutoIncludes()
+							.Include(i => i.Films).ThenInclude(ti => ti.Film).IgnoreAutoIncludes()
 							.ToListAsync();
 			return records;
 		}

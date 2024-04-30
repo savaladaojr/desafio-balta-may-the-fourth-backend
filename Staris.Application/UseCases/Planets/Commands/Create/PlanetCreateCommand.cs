@@ -9,7 +9,7 @@ public sealed record PlanetCreateCommand(
 	int OrbitalPeriod,
 	int Diameter,
 	string Climate,
-	decimal Gravity,
+	string Gravity,
 	string Terrain,
 	decimal SurfaceWater,
 	long Population

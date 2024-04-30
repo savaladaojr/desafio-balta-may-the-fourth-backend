@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Staris.Infra.Data;
 
@@ -10,9 +11,11 @@ using Staris.Infra.Data;
 namespace Staris.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240430132050_changing_character_fields_to_string")]
+    partial class changing_character_fields_to_string
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
@@ -37,7 +40,7 @@ namespace Staris.Infra.Migrations
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("integer");
 
                     b.Property<string>("HairColor")
                         .IsRequired()
@@ -132,7 +135,7 @@ namespace Staris.Infra.Migrations
 
                     b.Property<string>("Gravity")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("numeric");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -237,14 +240,14 @@ namespace Staris.Infra.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("ConsumablesPeriod")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<decimal>("Cost")
                         .HasColumnType("real");
 
-                    b.Property<string>("Crew")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Crew")
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("Lenght")
                         .HasColumnType("real");

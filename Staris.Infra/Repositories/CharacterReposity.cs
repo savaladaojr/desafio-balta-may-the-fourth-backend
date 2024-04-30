@@ -15,7 +15,7 @@ namespace Staris.Infra.Repositories
 		{
 			var records = await Entity.AsNoTracking()
 				.Include(i => i.HomeWorld).IgnoreAutoIncludes()
-				.Include(i => i.Films).IgnoreAutoIncludes()
+				.Include(i => i.Films).ThenInclude(ti => ti.Film).IgnoreAutoIncludes()
 				.ToListAsync();
 			return records;
 		}

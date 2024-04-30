@@ -11,11 +11,11 @@ public class Vehicle : Entity
     public decimal Cost { get; set; }
     public decimal Lenght { get; set; }
     public decimal MaxSpeed { get; set; }
-    public int Crew { get; set; }
+    public string Crew { get; set; } = string.Empty;
     public int Passengers { get; set; }
     public decimal CargoCapacity { get; set; }
     public int Consumables { get; set; }
-	public string ConsumablesPeriod { get; set; }
+	public string? ConsumablesPeriod { get; set; }
 	public string Class { get; set; } = string.Empty;
 
     public TypeOfVehicle Type { get; set; }
