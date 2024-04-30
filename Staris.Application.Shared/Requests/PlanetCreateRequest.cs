@@ -6,7 +6,7 @@ public sealed record PlanetCreateRequest(
 	int OrbitalPeriod,
 	int Diameter,
 	string Climate,
-	decimal Gravity,
+	string Gravity,
 	string Terrain,
 	decimal SurfaceWater,
 	long Population
