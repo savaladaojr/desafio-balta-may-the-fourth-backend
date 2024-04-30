@@ -83,7 +83,7 @@ public static class FilmRequestsMappingExtension
 			.WithName("FilmCreate}")
 			.WithSummary("Create a new Movie")
 			.Produces(TypedResults.Ok().StatusCode, typeof(FilmDTO))
-			.WithOpenApi();
+			.WithOpenApi().ExcludeFromDescription();
 
 
 		app.MapPost(
@@ -116,7 +116,7 @@ public static class FilmRequestsMappingExtension
 			.WithName("CharacterFilmCreateCommand}")
 			.WithSummary("Create a link between a Film and Character, it will be a character of a film.")
 			.Produces(TypedResults.Ok().StatusCode, typeof(FilmDTO))
-			.WithOpenApi();
+			.WithOpenApi().ExcludeFromDescription();
 
 
 		app.MapPost(
@@ -149,7 +149,7 @@ public static class FilmRequestsMappingExtension
 			.WithName("PlanetFilmCreateCommand}")
 			.WithSummary("Create a link between a Film and Planet, it will be a planet of a film.")
 			.Produces(TypedResults.Ok().StatusCode, typeof(FilmDTO))
-			.WithOpenApi();
+			.WithOpenApi().ExcludeFromDescription();
 
 		app.MapPost(
 		"/movies/vehicles",
@@ -181,7 +181,7 @@ public static class FilmRequestsMappingExtension
 			.WithName("VehicleFilmCreateCommand}")
 			.WithSummary("Create a link between a Film and Vehicle, it will be a vehicle of a film.")
 			.Produces(TypedResults.Ok().StatusCode, typeof(FilmDTO))
-			.WithOpenApi();
+			.WithOpenApi().ExcludeFromDescription();
 
 
 		app.MapPost(
@@ -214,7 +214,7 @@ public static class FilmRequestsMappingExtension
 			.WithName("StarshipFilmCreateCommand}")
 			.WithSummary("Create a link between a Film and Starship, it will be a startship of a film.")
 			.Produces(TypedResults.Ok().StatusCode, typeof(FilmDTO))
-			.WithOpenApi();
+			.WithOpenApi().ExcludeFromDescription();
 
 	}
 }

@@ -79,6 +79,6 @@ public static class VehicleRequestsMappingExtension
 			.WithName("VehicleCreate}")
 			.WithSummary("Create a new Vehicle")
 			.Produces(TypedResults.Ok().StatusCode, typeof(VehicleDTO))
-			.WithOpenApi();
+			.WithOpenApi().ExcludeFromDescription();
 	}
 }

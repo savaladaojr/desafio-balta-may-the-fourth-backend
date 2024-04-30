@@ -79,6 +79,7 @@ public static class CharacterRequestsMapping
 			.WithName("CharacterCreate}")
 			.WithSummary("Create a new Character")
 			.Produces(TypedResults.Ok().StatusCode, typeof(CharacterDTO))
-			.WithOpenApi();
+			.WithOpenApi()
+			.ExcludeFromDescription();
 	}
 }

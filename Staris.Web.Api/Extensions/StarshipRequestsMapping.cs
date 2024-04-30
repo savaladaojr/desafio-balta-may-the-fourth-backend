@@ -79,7 +79,7 @@ public static class StarshipRequestsMapping
 			.WithName("CreateCharacterLink}")
 			.WithSummary("Create a new Starship")
 			.Produces(TypedResults.Ok().StatusCode, typeof(StarshipDTO))
-			.WithOpenApi();
+			.WithOpenApi().ExcludeFromDescription();
 
 	}
 }

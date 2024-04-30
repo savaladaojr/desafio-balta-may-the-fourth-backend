@@ -79,7 +79,7 @@ public static class PlanetRequestsMappingExtension
 			.WithName("PlanetCreate}")
 			.WithSummary("Create a new planet")
 			.Produces(TypedResults.Ok().StatusCode, typeof(PlanetDTO))
-			.WithOpenApi();
+			.WithOpenApi().ExcludeFromDescription();
 
 		app.MapPost(
 			"/planets/resident",
@@ -111,6 +111,6 @@ public static class PlanetRequestsMappingExtension
 			.WithName("PlanetCharacterLinkCreate}")
 			.WithSummary("Create a link between a Planet and Character, it will be a planet resident.")
 			.Produces(TypedResults.Ok().StatusCode, typeof(PlanetDTO))
-			.WithOpenApi();
+			.WithOpenApi().ExcludeFromDescription();
 	}
 }
