@@ -12,7 +12,6 @@ namespace Staris.Integration.Processed;
 public class ProcessedBaseUrl
 {
     private static readonly HttpClient client = new HttpClient();
-
     private readonly ICharacterRepository _characterRepository;
     private readonly IUnitOfWork _unitOfWork;
 

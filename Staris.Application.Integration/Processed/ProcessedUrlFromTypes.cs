@@ -14,6 +14,7 @@ public class ProcessedUrlFromTypes
     private readonly IUnitOfWork _unitOfWork;
 
     private static readonly HttpClient client = new HttpClient();
+    private readonly Logger _logger = new Logger();
 
     public ProcessedUrlFromTypes(ICharacterRepository characterRepository, IUnitOfWork unitOfWork)
     {
@@ -118,6 +119,7 @@ public class ProcessedUrlFromTypes
     {
         try
         {
+            _logger.Log("Iniciando inserção de personagem");
             string[] parts = character.homeworld.ToString().Split('/');
             int planetId = Convert.ToInt32(parts[^2]);
 
@@ -139,16 +141,18 @@ public class ProcessedUrlFromTypes
                 HomeWorldId = planetId
             };
 
-            var createCharacter = _CharacterRepository.Create(newCharacter);
-            await _unitOfWork.SaveChangesAsync();
+            var createCharacter =  _CharacterRepository.Create(newCharacter);
+            var results = await _unitOfWork.SaveChangesAsync();
+
+            _logger.Log($"Personagem inserido com sucesso:{results}");
         }
         catch (FormatException ex)
         {
-            Console.WriteLine($"Erro ao tentar personagem: {ex.Message}");
+            _logger.Log($"Erro de formatação: {ex.Message}");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Erro ao tentar salvar personagem: {ex.Message}");
+            _logger.Log($"Erro ao inserir personagem: {ex.Message}");
         }
     }
 }
