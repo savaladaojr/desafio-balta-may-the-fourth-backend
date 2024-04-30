@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2BCC6D52-3DE4-4377-969D-8E98151EE1EF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{52F36029-3F14-4C30-A88D-E60536E5C50D}"
 EndProject
@@ -18,6 +21,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Test", "Staris.Test\Staris.Test.csproj", "{3D823718-F944-4216-A57C-8D1C3A4D3610}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staris.Application.Shared", "Staris.Application.Shared\Staris.Application.Shared.csproj", "{E979E7EE-6D14-4868-B99D-080EC73EFFBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staris.Console.Integration", "Staris.Console.Integration\Staris.Console.Integration.csproj", "{D4EE4919-0A42-4DB9-8A87-7D51CB2D7F1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +54,10 @@ Global
 		{E979E7EE-6D14-4868-B99D-080EC73EFFBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E979E7EE-6D14-4868-B99D-080EC73EFFBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E979E7EE-6D14-4868-B99D-080EC73EFFBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4EE4919-0A42-4DB9-8A87-7D51CB2D7F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4EE4919-0A42-4DB9-8A87-7D51CB2D7F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4EE4919-0A42-4DB9-8A87-7D51CB2D7F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4EE4919-0A42-4DB9-8A87-7D51CB2D7F1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +69,7 @@ Global
 		{DC97F03C-1FC9-4518-AE77-AC89C410E1BC} = {2BCC6D52-3DE4-4377-969D-8E98151EE1EF}
 		{3D823718-F944-4216-A57C-8D1C3A4D3610} = {52F36029-3F14-4C30-A88D-E60536E5C50D}
 		{E979E7EE-6D14-4868-B99D-080EC73EFFBF} = {2BCC6D52-3DE4-4377-969D-8E98151EE1EF}
+		{D4EE4919-0A42-4DB9-8A87-7D51CB2D7F1B} = {2BCC6D52-3DE4-4377-969D-8E98151EE1EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A4CC57CC-B105-4FEE-864B-51BA45CC1D76}
