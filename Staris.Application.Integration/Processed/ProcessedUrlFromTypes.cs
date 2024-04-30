@@ -129,15 +129,15 @@ public class ProcessedUrlFromTypes
 
             Character newCharacter = new Character()
             {
-                Name = character.name,
+                Name = character.name.ToString(),
                 BirthYear = birthYear,
-                BirthYearPeriod = birthYearPeriod,
+                BirthYearPeriod = birthYearPeriod.ToString(),
                 Gender = (Domain.Enumerables.TypeOfGender)character.gender,
-                Mass = character.mass,
-                Height = character.height,
-                EyeColor = character.eye_color,
-                SkinColor = character.skin_color,
-                HairColor = character.hair_color,
+                Mass = character.mass.ToString(),
+                Height = character.height.ToString(),
+                EyeColor = character.eye_color.ToString(),
+                SkinColor = character.skin_color.ToString(),
+                HairColor = character.hair_color.ToString(),
                 HomeWorldId = planetId
             };
 
@@ -152,7 +152,7 @@ public class ProcessedUrlFromTypes
         }
         catch (Exception ex)
         {
-            _logger.Log($"Erro ao inserir personagem: {ex.Message}");
+            _logger.Log($"Erro ao inserir personagem: {ex.InnerException}");
         }
     }
 }
