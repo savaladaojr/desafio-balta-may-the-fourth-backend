@@ -5,9 +5,9 @@ namespace Staris.Application.UseCases.Characters.Commands.Create;
 
 public sealed record CharacterCreateCommand(
 	string Name,
-	decimal BirthYear,
+	string BirthYear,
 	string BirthYearPeriod,
-	short Gender,
+	string Gender,
 	string Mass,
 	string Height,
 	string EyeColor,

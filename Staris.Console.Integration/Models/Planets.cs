@@ -1,4 +1,6 @@
-﻿public record planetResult(
+﻿namespace Staris.Console.Integration.Models;
+
+public record planetResult(
     int count,
     string? next,
     string? previous,
@@ -14,5 +16,7 @@ public record planetSTF(string name,
     string terrain,
     string surface_water,
     string population,
-    string url
+    string url,
+    IEnumerable<string> residents,
+    IEnumerable<string> films
 );

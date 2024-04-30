@@ -33,7 +33,7 @@ namespace Staris.Infra.Data.Configurations
                 .IsRequired();
 
             builder.Property(v => v.Crew)
-                .HasColumnType("integer")
+                .HasColumnType("text")
                 .IsRequired();
 
             builder.Property(v => v.Passengers)
@@ -50,7 +50,7 @@ namespace Staris.Infra.Data.Configurations
 
             builder.Property(v => v.ConsumablesPeriod)
                 .HasColumnType("text")
-                .IsRequired();
+                .IsRequired(false);
 
             builder.Property(v => v.Class)
                 .HasColumnType("text")

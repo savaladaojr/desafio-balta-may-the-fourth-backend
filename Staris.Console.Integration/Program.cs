@@ -1,13 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using Staris.Domain.Entities;
-using Staris.Infra.Data;
-using Staris.Infra.Repositories;
-using System.Collections.Generic;
-using System.IO;
 using System.Net.Http.Headers;
-using System.Net.NetworkInformation;
-using System.Text.Json;
-using static System.Net.WebRequestMethods;
+using Microsoft.EntityFrameworkCore;
+using Staris.Console.Integration.Services;
+using Staris.Infra.Data;
 
 using HttpClient client = new();
 client.DefaultRequestHeaders.Accept.Clear();
@@ -17,41 +12,55 @@ await ProcessRepositoriesAsync(client);
 
 static async Task ProcessRepositoriesAsync(HttpClient client)
 {
-	//Application DB Context?
-	//Referencia do SQLite 
+    //Application DB Context?
+    //Referencia do SQLite
+    var path = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
+    path = path.Replace("Staris.Console.Integration", "Staris.Web.Api");
+    path = path.Substring(0, path.IndexOf("i\\") + 2);
 
-	List<planetSTF> planets = new List<planetSTF>();
+    var dbContextOptionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+    dbContextOptionsBuilder.UseSqlite($"DataSource={path}app.db");
 
-	string? url = "https://swapi.py4e.com/api/planets/?page=1";
-	while (url != null)
-	{
-		var json = await client.GetStreamAsync(url);
-		var WSAPIplanets = await JsonSerializer.DeserializeAsync<planetResult>(json);
+    var context = new ApplicationDbContext(dbContextOptionsBuilder.Options);
 
-		planets.AddRange(WSAPIplanets.results);
-		url = WSAPIplanets.next;
-	}
+    context.Database.EnsureDeleted();
+    context.Database.Migrate();
 
-	foreach (var item in planets)
-	{
-		Planet planet = new Planet()
-		{
-			Id = int.Parse(item.url.Split('/')[item.url.Split('/').Length - 2].ToString()),
-			Name = item.name,
-			Climate = item.climate,
-			Diameter = int.Parse(item.diameter),
-			Gravity = decimal.Parse(item.gravity),
-			OrbitalPeriod = int.Parse(item.orbital_period),
-			RotationPeriod = int.Parse(item.rotation_period),
-			SurfaceWater  = decimal.Parse(item.rotation_period),
-			Terrain = item.terrain,
-			Population = long.Parse(item.population)			
-		};
+    // populando os planetas
+    var planetsService = new PlanetsService(context, client);
+    await planetsService.PopulateDatabase();
 
-		//Repositório para salvar?
+    // populando os personagens
+    var peopleService = new PeopleService(context, client);
+    await peopleService.PopulateDatabase();
 
-	}
+    // populando os filmes
+    var filmsService = new FilmsService(context, client);
+    await filmsService.PopulateDatabase();
 
+    // populando os veiculos
+    var vehiclesService = new VehiclesService(context, client);
+    await vehiclesService.PopulateDatabase();
 
+    // populando as naves estelares
+    var starshipsService = new StarshipsService(context, client);
+    await starshipsService.PopulateDatabase();
 
+    await context.SaveChangesAsync(); 
+
+    // Relacionamentos
+
+    // planetas
+    var planetsRelationshipsService = new PlanetsRelationshipsService(context, client);
+    await planetsRelationshipsService.PopulateDatabase();
+
+    // personagens
+    var peopleRelationshipsService = new PeopleRelationshipsService(context, client);
+    await peopleRelationshipsService.PopulateDatabase();
+
+    // films
+    var filmsRelationshipsService = new FilmsRelationshipsService(context, client);
+    await filmsRelationshipsService.PopulateDatabase();
+
+    await context.SaveChangesAsync(); 
 }

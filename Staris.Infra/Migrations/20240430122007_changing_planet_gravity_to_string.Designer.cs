@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Staris.Infra.Data;
 
@@ -10,9 +11,11 @@ using Staris.Infra.Data;
 namespace Staris.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240430122007_changing_planet_gravity_to_string")]
+    partial class changing_planet_gravity_to_string
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
@@ -23,8 +26,7 @@ namespace Staris.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("BirthYear")
-                        .IsRequired()
+                    b.Property<decimal>("BirthYear")
                         .HasColumnType("text");
 
                     b.Property<string>("BirthYearPeriod")
@@ -35,9 +37,8 @@ namespace Staris.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<short>("Gender")
+                        .HasColumnType("integer");
 
                     b.Property<string>("HairColor")
                         .IsRequired()
@@ -47,7 +48,7 @@ namespace Staris.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("HomeWorldId")
+                    b.Property<int>("HomeWorldId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Mass")
@@ -132,7 +133,7 @@ namespace Staris.Infra.Migrations
 
                     b.Property<string>("Gravity")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("numeric");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -237,14 +238,14 @@ namespace Staris.Infra.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("ConsumablesPeriod")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<decimal>("Cost")
                         .HasColumnType("real");
 
-                    b.Property<string>("Crew")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Crew")
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("Lenght")
                         .HasColumnType("real");
@@ -295,6 +296,8 @@ namespace Staris.Infra.Migrations
                     b.HasOne("Staris.Domain.Entities.Planet", "HomeWorld")
                         .WithMany()
                         .HasForeignKey("HomeWorldId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("fk_Planets_Characters");
 
                     b.Navigation("HomeWorld");
