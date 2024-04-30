@@ -8,9 +8,9 @@ namespace Staris.Application.Shared.Requests;
 
 public sealed record CharacterCreateRequest(
     string Name,
-    decimal BirthYear,
+    string BirthYear,
     string BirthYearPeriod,
-    short Gender,
+    string Gender,
     string Mass,
     string Height,
     string EyeColor,

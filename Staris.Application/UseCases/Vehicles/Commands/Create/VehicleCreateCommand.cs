@@ -1,5 +1,4 @@
-﻿using Application.Shared.Dtos;
-using MediatR;
+﻿using MediatR;
 using Staris.Application.Shared.Dtos;
 
 namespace Staris.Application.UseCases.Vehicles.Commands.Create;
