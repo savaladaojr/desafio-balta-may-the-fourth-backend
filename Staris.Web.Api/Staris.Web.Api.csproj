@@ -26,9 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="app.db">
+    <Content Include="app.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
 
 </Project>
