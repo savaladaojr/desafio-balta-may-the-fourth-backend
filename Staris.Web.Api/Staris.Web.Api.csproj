@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <None Remove="app.db" />
+    <None Remove="app.db-shm" />
+    <None Remove="app.db-wal" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +29,12 @@
 
   <ItemGroup>
     <Content Include="app.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="app.db-shm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="app.db-wal">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
