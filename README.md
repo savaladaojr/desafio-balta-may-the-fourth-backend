@@ -9,7 +9,7 @@
 O projeto trata-se do desenvolvimento de uma API completa, fornecendo recursos como criação, leitura, atualização e exclusão de dados referentes ao universo **Star Wars**.
 A API possui dados disponíveis sobre Filmes, Personagens, Naves Estrelares, Veículos e Planetas. 
 
-## Participantes
+## 💼 Participantes
 ### 🚀 Capitão
 Sergio Valadão Junior - [Github](https://github.com/savaladaojr/)
 
@@ -84,7 +84,7 @@ dotnet run
 ```
 
 
-# 📌 Contribuíndo
+# 🤝 Contribuíndo
 
 1. Primeiro faça um <[Fork](https://github.com/savaladaojr/desafio-balta-may-the-fourth-backend)>)  do projeto;
 2. Creie um Branch para sua melhoria ou bugdix (e.g. `git checkout -b feature/fooBar`);
