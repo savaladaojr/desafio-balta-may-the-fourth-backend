@@ -482,3 +482,5 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+/Staris.Web.Api/app.db-shm
+/Staris.Web.Api/app.db-wal
