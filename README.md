@@ -55,7 +55,7 @@ git clone https://github.com/savaladaojr/desafio-balta-may-the-fourth-backend
 ```
 
 ### Executnado a API Localmente
-#### Abrindo o Projeto
+### Abrindo o Projeto
 1. Clique duas vezes sobre o arquivo da solução (.sln) no diretório.
 1.1. Isso irá abrir a solução na versão atual do Visual Studio instalado em seu computador.
 
@@ -66,7 +66,6 @@ git clone https://github.com/savaladaojr/desafio-balta-may-the-fourth-backend
 ```sh
 dotnet restore
 ```
-
 
 ### Compilando e Retodando a API
 
