@@ -39,6 +39,7 @@ Sergio Valadão Junior - [Github](https://github.com/savaladaojr/)
 * Networking
 * Muito conhecimento técnico
 
+
 ## 🧪 Como testar o projeto
 ### Pré-requisitos
 
@@ -66,6 +67,7 @@ git clone https://github.com/savaladaojr/desafio-balta-may-the-fourth-backend
 dotnet restore
 ```
 
+
 ### Compilando e Retodando a API
 
 1. Para compilar o projeto você possui duas opopções:
@@ -82,12 +84,15 @@ dotnet build
 dotnet run
 ```
 
-# Contribuíndo
+
+# 📌 Contribuíndo
+
 1. Primeiro faça um <[Fork](https://github.com/savaladaojr/desafio-balta-may-the-fourth-backend)>)  do projeto;
 2. Creie um Branch para sua melhoria ou bugdix (e.g. `git checkout -b feature/fooBar`);
 3. Realize o Commit de suas alreações (e.g. `git commit -am 'Add some fooBar'`);
 4. Atualize o branch (e.g. `git push origin feature/fooBar`);
 5. Crie um novo Pull Request.
+
 
 # 💜 Participe
 Quer participar dos próximos desafios? Junte-se a [maior comunidade .NET do Brasil 🇧🇷 💜](https://balta.io/discord)
