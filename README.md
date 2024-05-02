@@ -67,7 +67,7 @@ git clone https://github.com/savaladaojr/desafio-balta-may-the-fourth-backend
 dotnet restore
 ```
 
-### Compilando e Retodando a API
+### Compilando e Rodando a API
 
 1. Para compilar o projeto você possui duas opopções:
 1.1. A Primeira é clicar com o botão direito sobre o nome da solução e então selecionar "Build Solution".
